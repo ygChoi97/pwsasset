@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnp.pwsasset.pws.repository.PwsRepository">
+
+    <insert id="save">
+        INSERT INTO pwsinfo
+        (idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask)
+        VALUES
+        (#{idasset}, #{uptake}, #{company}, #{headquarters}, #{center}, #{department}, #{username}, #{userid}, #{centercd}, #{model}, #{assetno}, #{sn}, #{graphic}, #{monitor}, #{area}, #{building}, #{storey}, #{location}, #{objpurchase}, #{objuse}, #{introductiondate}, #{note}, #{desctask})
+    </insert>
+
+    <select id="findAll" resultType="com.cnp.pwsasset.pws.entity.Pws">
+        select idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask
+        from pwsinfo
+    </select>
+
+    <select id="findOne" resultType="com.cnp.pwsasset.pws.entity.Pws">
+        select idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask from pwsinfo where idasset=#{managementId}
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='pwsinfo'
+    </select>
+
+    <update id="modify">
+        update pwsinfo
+        set idasset=#{idasset}, uptake=#{uptake}, company=#{company}, headquarters=#{headquarters}, center=#{center}, department=#{department}, username=#{username}, userid=#{userid}, centercd=#{centercd}, model=#{model}, assetno=#{assetno}, sn=#{sn}, graphic=#{graphic}, monitor=#{monitor}, area=#{area}, building=#{building}, storey=#{storey}, location=#{location}, objpurchase=#{objpurchase}, objuse=#{objuse}, introductiondate=#{introductiondate}, note=#{note}, desctask=#{desctask}
+        where idasset=#{idasset}
+    </update>
+
+    <!--    <select id="queryColumnComment" resultType="com.cnp.pwsasset.pws.dto.ResponseDTO2">-->
+    <!--        select column_name, column_comment from information_schema.columns where table_name='pwsinfo'-->
+    <!--    </select>-->
+</mapper>
