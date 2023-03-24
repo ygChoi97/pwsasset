@@ -31,6 +31,15 @@
         where idasset=#{idasset}
     </update>
 
+    <insert id="insertDatas" parameterType="java.util.List">
+        INSERT INTO pwsinfo (idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.idasset}, #{item.uptake}, #{item.company}, #{item.headquarters}, #{item.center}, #{item.department}, #{item.username}, #{item.userid}, #{item.centercd}, #{item.model}, #{item.assetno}, #{item.sn}, #{item.graphic}, #{item.monitor}, #{item.area}, #{item.building}, #{item.storey}, #{item.location}, #{item.objpurchase}, #{item.objuse}, #{item.introductiondate}, #{item.note}, #{item.desctask})
+        </foreach>
+        on duplicate key update uptake=values(uptake), company=values(company), headquarters=values(headquarters), center=values(center), department=values(department), username=values(username), userid=values(userid), centercd=values(centercd), model=values(model), assetno=values(assetno), sn=values(sn), graphic=values(graphic), monitor=values(monitor), area=values(area), building=values(building), storey=values(storey), location=values(location), objpurchase=values(objpurchase), objuse=values(objuse), introductiondate=values(introductiondate), note=values(note), desctask=values(desctask)
+    </insert>
+
     <!--    <select id="queryColumnComment" resultType="com.cnp.pwsasset.pws.dto.ResponseDTO2">-->
     <!--        select column_name, column_comment from information_schema.columns where table_name='pwsinfo'-->
     <!--    </select>-->

@@ -42,4 +42,11 @@ public interface PwsRepository {
      * @return
      */
     boolean modify(Pws pws);
+
+    /**
+     *  자산 목록 등록 SQL
+     * @param list
+     * @return
+     */
+    boolean insertDatas(List<Pws> list);
 }

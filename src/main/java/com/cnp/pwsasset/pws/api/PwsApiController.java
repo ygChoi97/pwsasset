@@ -75,13 +75,36 @@ public class PwsApiController {
     }
 
     /**
+     *
+     * @param list
+     * @return
+     */
+    @PostMapping("/import")
+    public ResponseEntity<?> updateDB(@RequestBody List<Pws> list ) {
+        log.info("/api/pws/import POST request!");
+
+        try {
+            FindAllPwsDto dtos = service.importFromExeclService(list);
+
+            if (dtos == null)
+                return ResponseEntity.notFound().build();
+
+            return ResponseEntity.ok().body(dtos);
+
+        } catch(RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+    /**
      * 자산 정보 수정 API
      * @param pws
      * @return
      */
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Pws pws) {
-        log.info("api/pws/menu PUT request!");
+        log.info("api/pws{} PUT request!", pws);
 
         try {
             FindAllPwsDto dtos = service.updateService(pws);

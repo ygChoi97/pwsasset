@@ -67,4 +67,18 @@ public class PwsService {
         return flag ? findAllService() : new FindAllPwsDto();
 
     }
+
+    public FindAllPwsDto importFromExeclService(List<Pws> list) {
+        if(list == null) {
+            log.warn("list cannot be null!");
+            throw new RuntimeException("list cannot be null!");
+        }
+        boolean flag = repository.insertDatas(list);
+
+        if(flag) log.info("자산 {}개 항목이 추가/업데이트되었습니다.", list.size());
+        if(flag == false)
+            log.warn("자산이 업데이트되지 않았습니다.");
+
+        return flag ? findAllService() : null;
+    }
 }
