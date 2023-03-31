@@ -31,7 +31,7 @@
         where idasset=#{idasset}
     </update>
 
-    <insert id="insertDatas" parameterType="java.util.List">
+    <insert id="insertData" parameterType="java.util.List">
         INSERT INTO pwsinfo (idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask)
         VALUES
         <foreach collection="list" item="item" separator=",">

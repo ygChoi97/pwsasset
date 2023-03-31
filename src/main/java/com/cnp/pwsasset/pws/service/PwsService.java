@@ -7,7 +7,6 @@ import com.cnp.pwsasset.pws.entity.Pws;
 import com.cnp.pwsasset.pws.repository.PwsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,12 +67,12 @@ public class PwsService {
 
     }
 
-    public FindAllPwsDto importFromExeclService(List<Pws> list) {
+    public FindAllPwsDto importFromExcelService(List<Pws> list) {
         if(list == null) {
             log.warn("list cannot be null!");
             throw new RuntimeException("list cannot be null!");
         }
-        boolean flag = repository.insertDatas(list);
+        boolean flag = repository.insertData(list);
 
         if(flag) log.info("자산 {}개 항목이 추가/업데이트되었습니다.", list.size());
         if(flag == false)

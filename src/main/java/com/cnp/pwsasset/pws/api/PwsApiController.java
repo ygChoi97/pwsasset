@@ -7,7 +7,6 @@ import com.cnp.pwsasset.pws.entity.Pws;
 import com.cnp.pwsasset.pws.service.PwsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -84,7 +83,7 @@ public class PwsApiController {
         log.info("/api/pws/import POST request!");
 
         try {
-            FindAllPwsDto dtos = service.importFromExeclService(list);
+            FindAllPwsDto dtos = service.importFromExcelService(list);
 
             if (dtos == null)
                 return ResponseEntity.notFound().build();
@@ -120,7 +119,7 @@ public class PwsApiController {
      */
     @GetMapping("/menu")
     public ResponseEntity<?> findPwsMenu() {
-        log.info("api/pws/menu GET request!");
+        log.info("/api/pws/menu GET request!");
 
         List<ItemNameOfAssetDTO> column_info = service.queryColumnCommentService();
 

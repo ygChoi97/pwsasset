@@ -3,7 +3,6 @@ package com.cnp.pwsasset.pws.repository;
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
 import com.cnp.pwsasset.pws.entity.Pws;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -48,5 +47,5 @@ public interface PwsRepository {
      * @param list
      * @return
      */
-    boolean insertDatas(List<Pws> list);
+    boolean insertData(List<Pws> list);
 }
