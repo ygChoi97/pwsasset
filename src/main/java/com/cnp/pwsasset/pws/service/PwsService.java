@@ -80,4 +80,8 @@ public class PwsService {
 
         return flag ? findAllService() : null;
     }
+
+    public FindAllPwsDto findDisposalAllService(String search) {
+        return new FindAllPwsDto(repository.findDisposalAll(search));
+    }
 }

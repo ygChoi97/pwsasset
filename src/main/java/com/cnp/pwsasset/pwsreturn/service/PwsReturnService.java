@@ -27,7 +27,7 @@ public class PwsReturnService {
         boolean flag = repository.insertData(list);
 
         if(flag) log.info("반납 {}개 항목이 추가/업데이트되었습니다.", list.size());
-        if(flag == false)
+        if(!flag)
             log.warn("반납이 업데이트되지 않았습니다.");
 
         return flag ? findAllService() : null;

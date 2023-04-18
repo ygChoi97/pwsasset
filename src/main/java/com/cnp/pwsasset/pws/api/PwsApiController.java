@@ -8,6 +8,7 @@ import com.cnp.pwsasset.pws.service.PwsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class PwsApiController {
     private final PwsService service;
 
     /**
-     * 자산 전체 조회 SQL
+     * 자산 전체 조회 API
      * @return
      */
     @GetMapping
@@ -29,6 +30,20 @@ public class PwsApiController {
         log.info("/api/pws GET request!");
 
         FindAllPwsDto dtos = service.findAllService();
+        if(dtos.getCount() < 1) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dtos);
+    }
+
+    /**
+     * 자산(매각, 매각대기) 전체 조회 API
+     * @return
+     */
+    @GetMapping("/disposal")
+    public ResponseEntity<?> findDisposalAll() {
+        log.info("/api/pws/disposal GET request!");
+        String search = "매각";
+        FindAllPwsDto dtos = service.findDisposalAllService(search);
         if(dtos.getCount() < 1) return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok().body(dtos);

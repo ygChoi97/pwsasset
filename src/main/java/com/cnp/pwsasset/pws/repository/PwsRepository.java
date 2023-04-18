@@ -48,4 +48,6 @@ public interface PwsRepository {
      * @return
      */
     boolean insertData(List<Pws> list);
+
+    List<Pws> findDisposalAll(String search);
 }

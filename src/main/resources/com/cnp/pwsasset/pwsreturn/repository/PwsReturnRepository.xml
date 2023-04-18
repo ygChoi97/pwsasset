@@ -22,4 +22,3 @@
         on duplicate key update hoteam=values(hoteam), housername=values(housername), houserid=values(houserid), toteam=values(toteam), manager=values(manager), assetno=values(assetno), idasset=values(idasset), sn=values(sn), model=values(model), location=values(location), reason=values(reason), note=values(note), resigndate=values(resigndate), returndate=values(returndate)
     </insert>
 </mapper>
-

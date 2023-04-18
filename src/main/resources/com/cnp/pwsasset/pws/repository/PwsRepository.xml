@@ -17,6 +17,11 @@
         from pwsinfo
     </select>
 
+    <select id="findDisposalAll" resultType="com.cnp.pwsasset.pws.entity.Pws">
+        select idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask
+        from pwsinfo where uptake like CONCAT('%',#{search}, '%')
+    </select>
+
     <select id="findOne" resultType="com.cnp.pwsasset.pws.entity.Pws">
         select idasset, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, sn, graphic, monitor, area, building, storey, location, objpurchase, objuse, introductiondate, note, desctask from pwsinfo where idasset=#{managementId}
     </select>
