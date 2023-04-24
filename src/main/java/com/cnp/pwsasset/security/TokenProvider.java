@@ -26,7 +26,8 @@ public class TokenProvider {
         // 기한은 지금부터 1일로 설정
         Date expriyDate = Date.from(
                 Instant.now()
-                        .plus(1, ChronoUnit.DAYS)
+                        //.plus(1, ChronoUnit.DAYS)
+                        .plus(30, ChronoUnit.MINUTES)
         );
 
         // Jwt 토큰 생성

@@ -8,12 +8,12 @@ import lombok.*;
 @NoArgsConstructor
 public class UserResponseDTO {
 
-    private String email;
+    private String userid;
     private String username;
     private String token; // 인증 토큰
 
     public UserResponseDTO(UserEntity entity) {
-        this.email = entity.getEmail();
+        this.userid = entity.getUserid();
         this.username = entity.getUsername();
     }
 }

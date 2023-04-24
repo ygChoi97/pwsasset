@@ -98,7 +98,7 @@ public class UserController {
 
         try {
             UserEntity user
-                    = userService.validateLogin(dto.getEmail(), dto.getPassword());
+                    = userService.validateLogin(dto.getUserid(), dto.getPassword());
 
             // 토큰 생성
             final String token = provider.create(user);
@@ -113,11 +113,11 @@ public class UserController {
         }
     }
 
-    // /auth/check?email=aaa@naver.com
+    // /auth/check?userid=aaa
     @GetMapping("/check")
-    public ResponseEntity<?> checkEmail(String email) {
-        boolean flag = userService.isDuplicate(email);
-        log.info("{} 중복여부?? - {}", email, flag);
+    public ResponseEntity<?> checkUserId(String userid) {
+        boolean flag = userService.isDuplicate(userid);
+        log.info("{} 중복여부?? - {}", userid, flag);
         return ResponseEntity.ok().body(flag);
     }
 

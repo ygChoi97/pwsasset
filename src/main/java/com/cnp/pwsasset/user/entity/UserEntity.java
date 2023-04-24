@@ -14,7 +14,7 @@ public class UserEntity {
 
     private String id;
     private String username;
-    private String email;
+    private String userid;
     private String password;
 
     private String profileImg;
@@ -26,7 +26,7 @@ public class UserEntity {
     // dto를 entity로 변환
     public UserEntity(UserRequestDTO dto) {
         this();
-        this.email = dto.getEmail();
+        this.userid = dto.getUserid();
         this.username = dto.getUsername();
         this.password = dto.getPassword();
     }

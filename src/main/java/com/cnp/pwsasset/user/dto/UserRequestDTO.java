@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 public class UserRequestDTO {
 
-    private String email;
+    private String userid;
     private String password;
     private String username;
 }

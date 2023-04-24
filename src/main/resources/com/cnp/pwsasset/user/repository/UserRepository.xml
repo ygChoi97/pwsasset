@@ -5,23 +5,23 @@
 
 <mapper namespace="com.cnp.pwsasset.user.repository.UserRepository">
 
-    <select id="findUserByEmail" resultType="com.cnp.pwsasset.user.entity.UserEntity">
-        SELECT id, email, username, password
+    <select id="findUserByUserId" resultType="com.cnp.pwsasset.user.entity.UserEntity">
+        SELECT id, userid, username, password
         FROM tbl_user
-        WHERE email=#{email}
+        WHERE userid=#{userid}
     </select>
 
-    <select id="existsByEmail" resultType="boolean">
+    <select id="existsByUserId" resultType="boolean">
         SELECT COUNT(*)
         FROM tbl_user
-        WHERE email=#{email}
+        WHERE userid=#{userid}
     </select>
 
     <insert id="register">
         INSERT INTO tbl_user
-            (id, email, password, username, profileImg)
+            (id, userid, password, username, profileImg)
         VALUES
-            (#{id}, #{email}, #{password}, #{username}, #{profileImg})
+            (#{id}, #{userid}, #{password}, #{username}, #{profileImg})
     </insert>
 
     <select id="findProfile" resultType="String">

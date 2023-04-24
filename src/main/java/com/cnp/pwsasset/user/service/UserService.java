@@ -17,7 +17,7 @@ public class UserService {
 
     // 회원 가입 기능
     public UserEntity createServ(final UserEntity userEntity) throws RuntimeException {
-        if (userEntity == null || userEntity.getEmail() == null) {
+        if (userEntity == null || userEntity.getUserid() == null) {
             throw new RuntimeException("Invalid args!");
         }
 
@@ -28,19 +28,19 @@ public class UserService {
         boolean flag = userRepository.register(userEntity);
 
         return flag
-                ? getByCredential(userEntity.getEmail())
+                ? getByCredential(userEntity.getUserid())
                 : null;
     }
 
-    public UserEntity getByCredential(String email) {
-        return userRepository.findUserByEmail(email);
+    public UserEntity getByCredential(String userid) {
+        return userRepository.findUserByUserId(userid);
     }
 
     // 로그인 검증 메서드
-    public UserEntity validateLogin(final String email, final String password) {
+    public UserEntity validateLogin(final String userid, final String password) {
 
         // 회원가입을 했는가?
-        UserEntity user = getByCredential(email);
+        UserEntity user = getByCredential(userid);
 
         if (user == null) throw new RuntimeException("가입된 회원이 아닙니다.");
 
@@ -52,9 +52,9 @@ public class UserService {
         return user; // 로그인 성공시 회원정보 리턴
     }
 
-    // 이메일 중복체크
-    public boolean isDuplicate(String email) {
-        return userRepository.existsByEmail(email);
+    // userid 중복체크
+    public boolean isDuplicate(String userid) {
+        return userRepository.existsByUserId(userid);
     }
 
 
