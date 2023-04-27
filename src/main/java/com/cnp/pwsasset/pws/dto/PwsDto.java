@@ -8,7 +8,6 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsDto {
-    private String idasset;         // 자산관리번호
     private String uptake;           // 사용구분
     private String company;         // 회사
     private String headquarters;    // 본부
@@ -19,8 +18,10 @@ public class PwsDto {
     private String centercd;        // 코스트센터CD
     private String model;           // 모델명
     private String assetno;         // 자산번호
+    private String idasset;         // 자산관리번호
     private String sn;              // S/N
     private String graphic;         // 그래픽카드
+    private String memory;          // 메모리
     private String monitor;         // 모니터
     private String area;            // 지역
     private String building;        // 건물명
@@ -28,12 +29,11 @@ public class PwsDto {
     private String location;        // 상세위치
     private String objpurchase;     // 구매용도
     private String objuse;          // 사용용도
+    private String desctask;        // 상세업무
     private Date introductiondate;    //도입년월
     private String note;            // 비고
-    private String desctask;        // 상세업무
 
     public PwsDto(Pws pws) {
-        idasset = pws.getIdasset();
         uptake = pws.getUptake();
         company = pws.getCompany();
         headquarters = pws.getHeadquarters();
@@ -44,8 +44,10 @@ public class PwsDto {
         centercd = pws.getCenter();
         model = pws.getModel();
         assetno = pws.getAssetno();
+        idasset = pws.getIdasset();
         sn = pws.getSn();
         graphic = pws.getGraphic();
+        memory = pws.getMemory();
         monitor = pws.getMonitor();
         area = pws.getArea();
         building = pws.getBuilding();
@@ -53,8 +55,8 @@ public class PwsDto {
         location = pws.getLocation();
         objpurchase = pws.getObjpurchase();
         objuse = pws.getObjuse();
+        desctask = pws.getDesctask();
         introductiondate = pws.getIntroductiondate();
         note = pws.getNote();
-        desctask = pws.getDesctask();
     }
 }

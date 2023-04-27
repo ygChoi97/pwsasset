@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 
 public class Pws {
-    private String idasset;         // 자산관리번호
+
     private String uptake;          // 사용구분
     private String company;         // 회사
     private String headquarters;    // 본부
@@ -22,8 +22,10 @@ public class Pws {
     private String centercd;        // 코스트센터CD
     private String model;           // 모델명
     private String assetno;         // 자산번호
+    private String idasset;         // 자산관리번호
     private String sn;              // S/N
     private String graphic;         // 그래픽카드
+    private String memory;          // 메모리
     private String monitor;         // 모니터
     private String area;            // 지역
     private String building;        // 건물명
@@ -31,7 +33,7 @@ public class Pws {
     private String location;        // 상세위치
     private String objpurchase;     // 구매용도
     private String objuse;          // 사용용도
+    private String desctask;        // 상세업무
     private Date introductiondate;  //도입년월
     private String note;            // 비고
-    private String desctask;        // 상세업무
 }
