@@ -10,10 +10,10 @@ import java.util.Date;
 @Setter @Getter @ToString
 @AllArgsConstructor
 public class PwsProvision {
-    private int id;
+    private String id;
     private String department;
     private String centercd;
-    private String realname;
+    private String headteam;
     private String center;
     private String headquarters;
     private String sysadmin;

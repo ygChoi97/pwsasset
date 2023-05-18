@@ -10,7 +10,9 @@ import java.util.Date;
 @Setter @Getter @ToString
 @AllArgsConstructor
 public class PwsReturn {
-    private int id;
+    private String id;
+    private String headquarters;    // 본부
+    private String area;            // 지역
     private String hoteam;
     private String housername;
     private String houserid;

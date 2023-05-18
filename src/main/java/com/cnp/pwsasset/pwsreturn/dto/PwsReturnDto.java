@@ -8,7 +8,9 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsReturnDto {
-    private int id;
+    private String id;
+    private String headquarters;    // 본부
+    private String area;            // 지역
     private String hoteam;
     private String housername;
     private String houserid;
@@ -25,6 +27,8 @@ public class PwsReturnDto {
     private Date returndate;
     public PwsReturnDto(PwsReturn pwsReturn) {
         id = pwsReturn.getId();
+        headquarters = pwsReturn.getHeadquarters();
+        area = pwsReturn.getArea();
         hoteam = pwsReturn.getHoteam();
         housername = pwsReturn.getHousername();
         houserid = pwsReturn.getHouserid();

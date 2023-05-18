@@ -14,11 +14,11 @@
     </select>
 
     <insert id="insertData" parameterType="java.util.List">
-        insert into pwsprovision (id, department, centercd, realname, center, headquarters, sysadmin, idsysadmin, assetno, idasset, sn, manager, idmanager, areainstall, locinstall, model, period, reason, joiningdate, applicationdate, provisiondate, note)
+        insert into pwsprovision (id, department, centercd, headteam, center, headquarters, sysadmin, idsysadmin, assetno, idasset, sn, manager, idmanager, areainstall, locinstall, model, period, reason, joiningdate, applicationdate, provisiondate, note)
         values
         <foreach collection="list" item="item" separator=",">
-            (#{item.id}, #{item.department}, #{item.centercd}, #{item.realname}, #{item.center}, #{item.headquarters}, #{item.sysadmin}, #{item.idsysadmin}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.manager}, #{item.idmanager}, #{item.areainstall}, #{item.locinstall}, #{item.model}, #{item.period}, #{item.reason}, #{item.joiningdate}, #{item.applicationdate}, #{item.provisiondate}, #{item.note})
+            (#{item.id}, #{item.department}, #{item.centercd}, #{item.headteam}, #{item.center}, #{item.headquarters}, #{item.sysadmin}, #{item.idsysadmin}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.manager}, #{item.idmanager}, #{item.areainstall}, #{item.locinstall}, #{item.model}, #{item.period}, #{item.reason}, #{item.joiningdate}, #{item.applicationdate}, #{item.provisiondate}, #{item.note})
         </foreach>
-        on duplicate key update department=values(department), centercd=values(centercd), realname=values(realname), center=values(center), headquarters=values(headquarters), sysadmin=values(sysadmin), idsysadmin=values(idsysadmin), assetno=values(assetno), idasset=values(idasset), sn=values(sn), manager=values(manager), idmanager=values(idmanager), areainstall=values(areainstall), locinstall=values(locinstall), model=values(model), period=values(period), reason=values(reason), joiningdate=values(joiningdate), applicationdate=values(applicationdate), provisiondate=values(provisiondate), note=values(note)
+        on duplicate key update department=values(department), centercd=values(centercd), headteam=values(headteam), center=values(center), headquarters=values(headquarters), sysadmin=values(sysadmin), idsysadmin=values(idsysadmin), assetno=values(assetno), idasset=values(idasset), sn=values(sn), manager=values(manager), idmanager=values(idmanager), areainstall=values(areainstall), locinstall=values(locinstall), model=values(model), period=values(period), reason=values(reason), joiningdate=values(joiningdate), applicationdate=values(applicationdate), provisiondate=values(provisiondate), note=values(note)
     </insert>
 </mapper>

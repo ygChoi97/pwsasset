@@ -8,10 +8,10 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsProvisionDto {
-    private int id;
+    private String id;
     private String department;
     private String centercd;
-    private String realname;
+    private String headteam;
     private String center;
     private String headquarters;
     private String sysadmin;
@@ -35,7 +35,7 @@ public class PwsProvisionDto {
         id = pwsProvision.getId();
         department = pwsProvision.getDepartment();
         centercd = pwsProvision.getCentercd();
-        realname = pwsProvision.getRealname();
+        headteam = pwsProvision.getHeadteam();
         center = pwsProvision.getCenter();
         headquarters = pwsProvision.getHeadquarters();
         sysadmin = pwsProvision.getSysadmin();

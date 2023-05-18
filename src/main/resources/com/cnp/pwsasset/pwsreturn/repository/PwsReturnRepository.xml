@@ -14,11 +14,11 @@
     </select>
 
     <insert id="insertData" parameterType="java.util.List">
-        insert into pwsreturn (id, hoteam, housername, houserid, toteam, manager, assetno, idasset, sn, model, location, reason, note, resigndate, returndate)
+        insert into pwsreturn (id, headquarters, area, hoteam, housername, houserid, toteam, manager, assetno, idasset, sn, model, location, reason, note, resigndate, returndate)
         values
         <foreach collection="list" item="item" separator=",">
-            (#{item.id}, #{item.hoteam}, #{item.housername}, #{item.houserid}, #{item.toteam}, #{item.manager}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.model}, #{item.location}, #{item.reason}, #{item.note}, #{item.resigndate}, #{item.returndate})
+            (#{item.id}, #{item.headquarters}, #{item.area}, #{item.hoteam}, #{item.housername}, #{item.houserid}, #{item.toteam}, #{item.manager}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.model}, #{item.location}, #{item.reason}, #{item.note}, #{item.resigndate}, #{item.returndate})
         </foreach>
-        on duplicate key update hoteam=values(hoteam), housername=values(housername), houserid=values(houserid), toteam=values(toteam), manager=values(manager), assetno=values(assetno), idasset=values(idasset), sn=values(sn), model=values(model), location=values(location), reason=values(reason), note=values(note), resigndate=values(resigndate), returndate=values(returndate)
+        on duplicate key update headquarters=values(headquarters), area=values(area), hoteam=values(hoteam), housername=values(housername), houserid=values(houserid), toteam=values(toteam), manager=values(manager), assetno=values(assetno), idasset=values(idasset), sn=values(sn), model=values(model), location=values(location), reason=values(reason), note=values(note), resigndate=values(resigndate), returndate=values(returndate)
     </insert>
 </mapper>
