@@ -21,13 +21,6 @@ public class PwsService {
 
         return new FindAllPwsDto(repository.findAll());
     }
-    public PwsDto findOneService(String managementId) {
-
-        Pws pws = repository.findOne(managementId);
-        log.info("findOneService returns data - {}", pws);
-
-        return pws!=null ? new PwsDto(pws) : null;
-    }
 
     //    public List<ResponseDTO> queryColumnCommentService() {
     public List<ItemNameOfAssetDTO> queryColumnCommentService() {
@@ -55,16 +48,16 @@ public class PwsService {
 
     }
 
-    public FindAllPwsDto updateService(final Pws pws) {
+    public FindAllPwsDto updateServiceWhereID(Pws pws) {
         if (pws == null) {
             log.warn("pws cannot be null!");
             throw new RuntimeException("pws cannot be null!");
         }
 
-        boolean flag = repository.modify(pws);
-
-        return flag ? findAllService() : new FindAllPwsDto();
-
+        boolean flag = repository.modifyWhereID(pws);
+        if(flag == false)
+            log.warn("자산이 업데이트되지 않았습니다.");
+        return flag ? findAllService() : null;
     }
 
     public FindAllPwsDto importFromExcelService(List<Pws> list) {
@@ -83,5 +76,27 @@ public class PwsService {
 
     public FindAllPwsDto findDisposalAllService(String search) {
         return new FindAllPwsDto(repository.findDisposalAll(search));
+    }
+
+    public PwsDto findOneServiceFromIdasset(String managementId) {
+
+        Pws pws = repository.findOneFromIdasset(managementId);
+        log.info("findOneFromIdasset returns data - {}", pws);
+
+        return pws!=null ? new PwsDto(pws) : null;
+    }
+
+    public PwsDto findOneFromSNService(String sn) {
+        Pws pws = repository.findOneFromSN(sn);
+        log.info("findOneFromSNService returns data - {}", pws);
+
+        return pws!=null ? new PwsDto(pws) : null;
+    }
+
+    public PwsDto findOneWhereSNService(String id) {
+        Pws pws = repository.findOneWhereId(id);
+        log.info("findOneWhereId returns data - {}", pws);
+
+        return pws!=null ? new PwsDto(pws) : null;
     }
 }

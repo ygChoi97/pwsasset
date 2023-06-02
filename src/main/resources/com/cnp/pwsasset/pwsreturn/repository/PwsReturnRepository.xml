@@ -14,11 +14,22 @@
     </select>
 
     <insert id="insertData" parameterType="java.util.List">
-        insert into pwsreturn (id, headquarters, area, hoteam, housername, houserid, toteam, manager, assetno, idasset, sn, model, location, reason, note, resigndate, returndate)
+        insert into pwsreturn (id, headquarters, hoteam, housername, houserid, toteam, manager, assetno, idasset, sn, model, area, location, reason, note, resigndate, returndate)
         values
         <foreach collection="list" item="item" separator=",">
-            (#{item.id}, #{item.headquarters}, #{item.area}, #{item.hoteam}, #{item.housername}, #{item.houserid}, #{item.toteam}, #{item.manager}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.model}, #{item.location}, #{item.reason}, #{item.note}, #{item.resigndate}, #{item.returndate})
+            (#{item.id}, #{item.headquarters}, #{item.hoteam}, #{item.housername}, #{item.houserid}, #{item.toteam}, #{item.manager}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.model}, #{item.area}, #{item.location}, #{item.reason}, #{item.note}, #{item.resigndate}, #{item.returndate})
         </foreach>
-        on duplicate key update headquarters=values(headquarters), area=values(area), hoteam=values(hoteam), housername=values(housername), houserid=values(houserid), toteam=values(toteam), manager=values(manager), assetno=values(assetno), idasset=values(idasset), sn=values(sn), model=values(model), location=values(location), reason=values(reason), note=values(note), resigndate=values(resigndate), returndate=values(returndate)
+        on duplicate key update headquarters=values(headquarters), hoteam=values(hoteam), housername=values(housername), houserid=values(houserid), toteam=values(toteam), manager=values(manager), assetno=values(assetno), idasset=values(idasset), sn=values(sn), model=values(model), area=values(area), location=values(location), reason=values(reason), note=values(note), resigndate=values(resigndate), returndate=values(returndate)
     </insert>
+
+    <select id="findOneWhereId" resultType="com.cnp.pwsasset.pwsreturn.entity.PwsReturn">
+        select * from pwsreturn where id=#{id}
+    </select>
+
+    <update id="modifyWhereID">
+        update pwsreturn
+        set headquarters=#{headquarters}, hoteam=#{hoteam}, housername=#{housername}, houserid=#{houserid}, toteam=#{toteam}, manager=#{manager}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, model=#{model}, area=#{area}, location=#{location}, reason=#{reason}, note=#{note}, resigndate=#{resigndate}, returndate=#{returndate}
+        where id=#{id}
+    </update>
+
 </mapper>

@@ -1,7 +1,10 @@
 package com.cnp.pwsasset.pwsprovision.api;
 
+import com.cnp.pwsasset.pws.dto.FindAllPwsDto;
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
+import com.cnp.pwsasset.pws.entity.Pws;
 import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
+import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsprovision.service.PwsProvisionService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +30,30 @@ public class PwsProvisionApiController {
         if(dtos.getCount() < 1) return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok().body(dtos);
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> findPwsProvisionWhereId(@PathVariable String id) {
+        log.info("/api/provision/id/{} GET request!", id);
+        if(id == null) return ResponseEntity.badRequest().build();
+
+        PwsProvisionDto dto = service.findOneServiceWhereId(id);
+
+        if(dto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateWhereID(@RequestBody PwsProvision provision) {
+        log.info("api/provision PUT request!\n{}", provision);
+
+        try {
+            FindAllPwsProvisionDto dtos = service.updateServiceWhereID(provision);
+            return ResponseEntity.ok().body(dtos);
+        }catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PostMapping("/import")

@@ -13,4 +13,8 @@ public interface PwsReturnRepository {
     boolean insertData(List<PwsReturn> list);
 
     List<ItemNameOfAssetDTO> queryColumnComment();
+
+    PwsReturn findOneWhereId(String id);
+
+    boolean modifyWhereID(PwsReturn pwsReturn);
 }

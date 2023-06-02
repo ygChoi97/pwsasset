@@ -21,4 +21,14 @@
         </foreach>
         on duplicate key update department=values(department), centercd=values(centercd), headteam=values(headteam), center=values(center), headquarters=values(headquarters), sysadmin=values(sysadmin), idsysadmin=values(idsysadmin), assetno=values(assetno), idasset=values(idasset), sn=values(sn), manager=values(manager), idmanager=values(idmanager), areainstall=values(areainstall), locinstall=values(locinstall), model=values(model), period=values(period), reason=values(reason), joiningdate=values(joiningdate), applicationdate=values(applicationdate), provisiondate=values(provisiondate), note=values(note)
     </insert>
+
+    <select id="findOneWhereId" resultType="com.cnp.pwsasset.pwsprovision.entity.PwsProvision">
+        select * from pwsprovision where id=#{id}
+    </select>
+
+    <update id="modifyWhereID">
+        update pwsprovision
+        set department=#{department}, centercd=#{centercd}, headteam=#{headteam}, center=#{center}, headquarters=#{headquarters}, sysadmin=#{sysadmin}, idsysadmin=#{idsysadmin}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, manager=#{manager}, idmanager=#{idmanager}, areainstall=#{areainstall}, locinstall=#{locinstall}, model=#{model}, period=#{period}, reason=#{reason}, joiningdate=#{joiningdate}, applicationdate=#{applicationdate}, provisiondate=#{provisiondate}, note=#{note}
+        where id=#{id}
+    </update>
 </mapper>

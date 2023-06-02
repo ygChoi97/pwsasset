@@ -1,7 +1,11 @@
 package com.cnp.pwsasset.pwsreturn.api;
 
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
+import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
+import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
+import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsreturn.dto.FindAllPwsReturnDto;
+import com.cnp.pwsasset.pwsreturn.dto.PwsReturnDto;
 import com.cnp.pwsasset.pwsreturn.entity.PwsReturn;
 import com.cnp.pwsasset.pwsreturn.service.PwsReturnService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +36,29 @@ public class PwsReturnApiController {
         return ResponseEntity.ok().body(dtos);
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> findPwsReturnWhereId(@PathVariable String id) {
+        log.info("/api/return/id/{} GET request!", id);
+        if(id == null) return ResponseEntity.badRequest().build();
+
+        PwsReturnDto dto = service.findOneServiceWhereId(id);
+
+        if(dto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateWhereID(@RequestBody PwsReturn pwsReturn) {
+        log.info("api/return PUT request!\n{}", pwsReturn);
+
+        try {
+            FindAllPwsReturnDto dtos = service.updateServiceWhereID(pwsReturn);
+            return ResponseEntity.ok().body(dtos);
+        }catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
     @PostMapping("/import")
     public ResponseEntity<?> updateDB(@RequestBody List<PwsReturn> list) {

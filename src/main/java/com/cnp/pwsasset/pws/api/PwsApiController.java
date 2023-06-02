@@ -54,12 +54,36 @@ public class PwsApiController {
      * @param managementId
      * @return
      */
-    @GetMapping("/{managementId}")
-    public ResponseEntity<?> findPws(@PathVariable String managementId) {
-        log.info("/api/pws/{} GET request!", managementId);
+    @GetMapping("/idasset/{managementId}")
+    public ResponseEntity<?> findPwsFromIdasset(@PathVariable String managementId) {
+        log.info("/api/pws/idasset/{} GET request!", managementId);
         if(managementId == null) return ResponseEntity.badRequest().build();
 
-        PwsDto dto = service.findOneService(managementId);
+        PwsDto dto = service.findOneServiceFromIdasset(managementId);
+
+        if(dto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping("/sn/{sn}")
+    public ResponseEntity<?> findPwsFromSN(@PathVariable String sn) {
+        log.info("/api/pws/sn/{} GET request!", sn);
+        if(sn == null) return ResponseEntity.badRequest().build();
+
+        PwsDto dto = service.findOneFromSNService(sn);
+
+        if(dto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> findPwsWhereId(@PathVariable String id) {
+        log.info("/api/pws/id/{} GET request!", id);
+        if(id == null) return ResponseEntity.badRequest().build();
+
+        PwsDto dto = service.findOneWhereSNService(id);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -117,11 +141,11 @@ public class PwsApiController {
      * @return
      */
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody Pws pws) {
-        log.info("api/pws{} PUT request!", pws);
+    public ResponseEntity<?> updateWhereID(@RequestBody Pws pws) {
+        log.info("api/pws PUT request!\n{}", pws);
 
         try {
-            FindAllPwsDto dtos = service.updateService(pws);
+            FindAllPwsDto dtos = service.updateServiceWhereID(pws);
             return ResponseEntity.ok().body(dtos);
         }catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();

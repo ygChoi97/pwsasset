@@ -10,7 +10,6 @@ import java.util.Date;
 public class PwsReturnDto {
     private String id;
     private String headquarters;    // 본부
-    private String area;            // 지역
     private String hoteam;
     private String housername;
     private String houserid;
@@ -20,6 +19,7 @@ public class PwsReturnDto {
     private String idasset;
     private String sn;
     private String model;
+    private String area;            // 지역
     private String location;
     private String reason;
     private String note;
@@ -28,7 +28,6 @@ public class PwsReturnDto {
     public PwsReturnDto(PwsReturn pwsReturn) {
         id = pwsReturn.getId();
         headquarters = pwsReturn.getHeadquarters();
-        area = pwsReturn.getArea();
         hoteam = pwsReturn.getHoteam();
         housername = pwsReturn.getHousername();
         houserid = pwsReturn.getHouserid();
@@ -38,6 +37,7 @@ public class PwsReturnDto {
         idasset = pwsReturn.getIdasset();
         sn = pwsReturn.getSn();
         model = pwsReturn.getModel();
+        area = pwsReturn.getArea();
         location = pwsReturn.getLocation();
         reason = pwsReturn.getReason();
         note = pwsReturn.getNote();

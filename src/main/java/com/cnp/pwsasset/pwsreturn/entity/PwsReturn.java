@@ -12,7 +12,6 @@ import java.util.Date;
 public class PwsReturn {
     private String id;
     private String headquarters;    // 본부
-    private String area;            // 지역
     private String hoteam;
     private String housername;
     private String houserid;
@@ -22,6 +21,7 @@ public class PwsReturn {
     private String idasset;
     private String sn;
     private String model;
+    private String area;            // 지역
     private String location;
     private String reason;
     private String note;

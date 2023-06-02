@@ -10,13 +10,6 @@ import java.util.List;
 public interface PwsRepository {
 
     /**
-     * 자산 개별 조회 SQL
-     * @param managementId
-     * @return
-     */
-    Pws findOne(String managementId);
-
-    /**
      * 자산 세부항목명 조회 SQL
      * @return
      */
@@ -40,7 +33,7 @@ public interface PwsRepository {
      * @param pws
      * @return
      */
-    boolean modify(Pws pws);
+    boolean modifyWhereID(Pws pws);
 
     /**
      *  자산 목록 등록 SQL
@@ -50,4 +43,10 @@ public interface PwsRepository {
     boolean insertData(List<Pws> list);
 
     List<Pws> findDisposalAll(String search);
+
+    Pws findOneFromIdasset(String managementId);
+
+    Pws findOneFromSN(String sn);
+
+    Pws findOneWhereId(String id);
 }

@@ -1,7 +1,9 @@
 package com.cnp.pwsasset.pwsprovision.service;
 
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
+import com.cnp.pwsasset.pws.dto.PwsDto;
 import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
+import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsprovision.repository.PwsProvisionRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +43,24 @@ public class PwsProvisionService {
         log.info("queryColumnCommentService returns data - {}", column_info);
 
         return column_info;
+    }
+
+    public PwsProvisionDto findOneServiceWhereId(String id) {
+        PwsProvision provision = repository.findOneWhereId(id);
+        log.info("findOneServiceWhereId returns data - {}", provision);
+
+        return provision!=null ? new PwsProvisionDto(provision) : null;
+    }
+
+    public FindAllPwsProvisionDto updateServiceWhereID(PwsProvision provision) {
+        if (provision == null) {
+            log.warn("provision cannot be null!");
+            throw new RuntimeException("provision cannot be null!");
+        }
+
+        boolean flag = repository.modifyWhereID(provision);
+        if(flag == false)
+            log.warn("자산이 업데이트되지 않았습니다.");
+        return flag ? findAllService() : null;
     }
 }

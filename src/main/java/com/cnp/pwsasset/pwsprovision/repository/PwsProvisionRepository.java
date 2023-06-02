@@ -13,4 +13,8 @@ public interface PwsProvisionRepository {
     List<ItemNameOfAssetDTO> queryColumnComment();
 
     boolean insertData(List<PwsProvision> list);
+
+    PwsProvision findOneWhereId(String id);
+
+    boolean modifyWhereID(PwsProvision provision);
 }
