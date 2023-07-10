@@ -8,8 +8,7 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsDto {
-    private int id;                 // id (pk)
-    private String uptake;           // 사용구분
+    private String uptake;          // 사용구분
     private String company;         // 회사
     private String headquarters;    // 본부
     private String center;          // 센터
@@ -19,7 +18,7 @@ public class PwsDto {
     private String centercd;        // 코스트센터CD
     private String model;           // 모델명
     private String assetno;         // 자산번호
-    private String idasset;         // 자산관리번호
+    private String idasset;         // 자산관리번호 (pk)
     private String sn;              // S/N
     private String graphic;         // 그래픽카드
     private String memory;          // 메모리
@@ -31,11 +30,10 @@ public class PwsDto {
     private String objpurchase;     // 구매용도
     private String objuse;          // 사용용도
     private String desctask;        // 상세업무
-    private Date introductiondate;    //도입년월
+    private Date introductiondate;  //도입년월
     private String note;            // 비고
 
     public PwsDto(Pws pws) {
-        id = pws.getId();
         uptake = pws.getUptake();
         company = pws.getCompany();
         headquarters = pws.getHeadquarters();

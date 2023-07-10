@@ -13,35 +13,31 @@
     </insert>
 
     <select id="findAll" resultType="com.cnp.pwsasset.pws.entity.Pws">
-        select id, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, idasset, sn, graphic, memory, monitor, area, building, storey, location, objpurchase, objuse, desctask, introductiondate, note
+        select *
         from pwsinfo
     </select>
 
     <select id="findDisposalAll" resultType="com.cnp.pwsasset.pws.entity.Pws">
-        select id, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, idasset, sn, graphic, memory, monitor, area, building, storey, location, objpurchase, objuse, desctask, introductiondate, note
+        select *
         from pwsinfo where uptake like CONCAT('%',#{search}, '%')
     </select>
 
-    <select id="findOneFromIdasset" resultType="com.cnp.pwsasset.pws.entity.Pws">
-        select id, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, idasset, sn, graphic, memory, monitor, area, building, storey, location, objpurchase, objuse, desctask, introductiondate, note from pwsinfo where idasset=#{managementId}
+    <select id="findOneWhereIdasset" resultType="com.cnp.pwsasset.pws.entity.Pws">
+        select * from pwsinfo where idasset=#{managementId}
     </select>
 
-    <select id="findOneFromSN" resultType="com.cnp.pwsasset.pws.entity.Pws">
-        select id, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, idasset, sn, graphic, memory, monitor, area, building, storey, location, objpurchase, objuse, desctask, introductiondate, note from pwsinfo where sn=#{sn}
-    </select>
-
-    <select id="findOneWhereId" resultType="com.cnp.pwsasset.pws.entity.Pws">
-        select id, uptake, company, headquarters, center, department, username, userid, centercd, model, assetno, idasset, sn, graphic, memory, monitor, area, building, storey, location, objpurchase, objuse, desctask, introductiondate, note from pwsinfo where id=#{id}
+    <select id="findOneWhereSN" resultType="com.cnp.pwsasset.pws.entity.Pws">
+        select * from pwsinfo where sn=#{sn}
     </select>
 
     <select id="queryColumnComment" resultType="HashMap">
         select column_name, column_comment from information_schema.columns where table_name='pwsinfo'
     </select>
 
-    <update id="modifyWhereID">
+    <update id="modifyWhereIdasset">
         update pwsinfo
         set uptake=#{uptake}, company=#{company}, headquarters=#{headquarters}, center=#{center}, department=#{department}, username=#{username}, userid=#{userid}, centercd=#{centercd}, model=#{model}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, graphic=#{graphic}, memory=#{memory}, monitor=#{monitor}, area=#{area}, building=#{building}, storey=#{storey}, location=#{location}, objpurchase=#{objpurchase}, objuse=#{objuse}, desctask=#{desctask}, introductiondate=#{introductiondate}, note=#{note}
-        where id=#{id}
+        where idasset=#{idasset}
     </update>
 
     <insert id="insertData" parameterType="java.util.List">

@@ -33,7 +33,7 @@ public interface PwsRepository {
      * @param pws
      * @return
      */
-    boolean modifyWhereID(Pws pws);
+    boolean modifyWhereIdasset(Pws pws);
 
     /**
      *  자산 목록 등록 SQL
@@ -44,9 +44,9 @@ public interface PwsRepository {
 
     List<Pws> findDisposalAll(String search);
 
-    Pws findOneFromIdasset(String managementId);
+    Pws findOneWhereIdasset(String managementId);
 
-    Pws findOneFromSN(String sn);
+    Pws findOneWhereSN(String sn);
 
     Pws findOneWhereId(String id);
 }

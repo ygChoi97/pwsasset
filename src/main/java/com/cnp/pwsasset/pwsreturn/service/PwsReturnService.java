@@ -1,8 +1,6 @@
 package com.cnp.pwsasset.pwsreturn.service;
 
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
-import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
-import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsreturn.dto.FindAllPwsReturnDto;
 import com.cnp.pwsasset.pwsreturn.dto.PwsReturnDto;
 import com.cnp.pwsasset.pwsreturn.entity.PwsReturn;
@@ -43,14 +41,14 @@ public class PwsReturnService {
         return column_info;
     }
 
-    public PwsReturnDto findOneServiceWhereId(String id) {
+    public PwsReturnDto findOneWhereIdService(String id) {
         PwsReturn pwsReturn = repository.findOneWhereId(id);
-        log.info("findOneServiceWhereId returns data - {}", pwsReturn);
+        log.info("findOneWhereIdService returns data - {}", pwsReturn);
 
         return pwsReturn!=null ? new PwsReturnDto(pwsReturn) : null;
     }
 
-    public FindAllPwsReturnDto updateServiceWhereID(PwsReturn pwsReturn) {
+    public FindAllPwsReturnDto updateWhereIDService(PwsReturn pwsReturn) {
         if (pwsReturn == null) {
             log.warn("pwsReturn cannot be null!");
             throw new RuntimeException("pwsReturn cannot be null!");

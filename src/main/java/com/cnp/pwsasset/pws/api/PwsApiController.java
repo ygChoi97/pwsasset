@@ -8,7 +8,6 @@ import com.cnp.pwsasset.pws.service.PwsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,11 +54,11 @@ public class PwsApiController {
      * @return
      */
     @GetMapping("/idasset/{managementId}")
-    public ResponseEntity<?> findPwsFromIdasset(@PathVariable String managementId) {
+    public ResponseEntity<?> findPwsWhereIdasset(@PathVariable String managementId) {
         log.info("/api/pws/idasset/{} GET request!", managementId);
         if(managementId == null) return ResponseEntity.badRequest().build();
 
-        PwsDto dto = service.findOneServiceFromIdasset(managementId);
+        PwsDto dto = service.findOneWhereIdassetService(managementId);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -67,23 +66,11 @@ public class PwsApiController {
     }
 
     @GetMapping("/sn/{sn}")
-    public ResponseEntity<?> findPwsFromSN(@PathVariable String sn) {
+    public ResponseEntity<?> findPwsWhereSN(@PathVariable String sn) {
         log.info("/api/pws/sn/{} GET request!", sn);
         if(sn == null) return ResponseEntity.badRequest().build();
 
-        PwsDto dto = service.findOneFromSNService(sn);
-
-        if(dto == null) return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok().body(dto);
-    }
-
-    @GetMapping("/id/{id}")
-    public ResponseEntity<?> findPwsWhereId(@PathVariable String id) {
-        log.info("/api/pws/id/{} GET request!", id);
-        if(id == null) return ResponseEntity.badRequest().build();
-
-        PwsDto dto = service.findOneWhereSNService(id);
+        PwsDto dto = service.findOneWhereSNService(sn);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -108,7 +95,7 @@ public class PwsApiController {
             return ResponseEntity.ok().body(dtos);
 
         } catch(RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
@@ -130,7 +117,7 @@ public class PwsApiController {
             return ResponseEntity.ok().body(dtos);
 
         } catch(RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
@@ -141,14 +128,14 @@ public class PwsApiController {
      * @return
      */
     @PutMapping
-    public ResponseEntity<?> updateWhereID(@RequestBody Pws pws) {
+    public ResponseEntity<?> updateWhereIdasset(@RequestBody Pws pws) {
         log.info("api/pws PUT request!\n{}", pws);
 
         try {
-            FindAllPwsDto dtos = service.updateServiceWhereID(pws);
+            FindAllPwsDto dtos = service.updateWhereIdassetService(pws);
             return ResponseEntity.ok().body(dtos);
         }catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e);
         }
     }
 

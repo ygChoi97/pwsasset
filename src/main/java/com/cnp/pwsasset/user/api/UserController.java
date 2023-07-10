@@ -105,7 +105,7 @@ public class UserController {
 
             UserResponseDTO responseDTO = new UserResponseDTO(user);
             responseDTO.setToken(token); // 발행한 토큰을 응답정보에 포함
-
+            log.info("responseDTO : {}", responseDTO);
             return ResponseEntity.ok().body(responseDTO);
 
         } catch (Exception e) {

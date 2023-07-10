@@ -1,14 +1,12 @@
 package com.cnp.pwsasset.pwsprovision.service;
 
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
-import com.cnp.pwsasset.pws.dto.PwsDto;
 import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsprovision.repository.PwsProvisionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,14 +43,14 @@ public class PwsProvisionService {
         return column_info;
     }
 
-    public PwsProvisionDto findOneServiceWhereId(String id) {
+    public PwsProvisionDto findOneWhereIdService(String id) {
         PwsProvision provision = repository.findOneWhereId(id);
-        log.info("findOneServiceWhereId returns data - {}", provision);
+        log.info("findOneWhereIdService returns data - {}", provision);
 
         return provision!=null ? new PwsProvisionDto(provision) : null;
     }
 
-    public FindAllPwsProvisionDto updateServiceWhereID(PwsProvision provision) {
+    public FindAllPwsProvisionDto updateWhereIDService(PwsProvision provision) {
         if (provision == null) {
             log.warn("provision cannot be null!");
             throw new RuntimeException("provision cannot be null!");

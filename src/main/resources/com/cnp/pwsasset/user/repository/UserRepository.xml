@@ -6,7 +6,7 @@
 <mapper namespace="com.cnp.pwsasset.user.repository.UserRepository">
 
     <select id="findUserByUserId" resultType="com.cnp.pwsasset.user.entity.UserEntity">
-        SELECT id, userid, username, password
+        SELECT id, userid, username, password, role
         FROM tbl_user
         WHERE userid=#{userid}
     </select>
@@ -19,9 +19,9 @@
 
     <insert id="register">
         INSERT INTO tbl_user
-            (id, userid, password, username, profileImg)
+            (id, userid, password, username, role, profileImg)
         VALUES
-            (#{id}, #{userid}, #{password}, #{username}, #{profileImg})
+            (#{id}, #{userid}, #{password}, #{username}, #{role}, #{profileImg})
     </insert>
 
     <select id="findProfile" resultType="String">

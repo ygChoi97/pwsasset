@@ -17,6 +17,8 @@ public class UserEntity {
     private String userid;
     private String password;
 
+    private String role;
+
     private String profileImg;
 
     public UserEntity() {
@@ -29,5 +31,6 @@ public class UserEntity {
         this.userid = dto.getUserid();
         this.username = dto.getUsername();
         this.password = dto.getPassword();
+        this.role = dto.getRole();
     }
 }

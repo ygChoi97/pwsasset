@@ -1,8 +1,6 @@
 package com.cnp.pwsasset.pwsprovision.api;
 
-import com.cnp.pwsasset.pws.dto.FindAllPwsDto;
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
-import com.cnp.pwsasset.pws.entity.Pws;
 import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
 import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
@@ -37,7 +35,7 @@ public class PwsProvisionApiController {
         log.info("/api/provision/id/{} GET request!", id);
         if(id == null) return ResponseEntity.badRequest().build();
 
-        PwsProvisionDto dto = service.findOneServiceWhereId(id);
+        PwsProvisionDto dto = service.findOneWhereIdService(id);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -49,10 +47,10 @@ public class PwsProvisionApiController {
         log.info("api/provision PUT request!\n{}", provision);
 
         try {
-            FindAllPwsProvisionDto dtos = service.updateServiceWhereID(provision);
+            FindAllPwsProvisionDto dtos = service.updateWhereIDService(provision);
             return ResponseEntity.ok().body(dtos);
         }catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
@@ -69,7 +67,7 @@ public class PwsProvisionApiController {
             return ResponseEntity.ok().body(dtos);
 
         } catch(RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e);
         }
     }
 

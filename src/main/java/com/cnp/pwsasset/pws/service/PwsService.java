@@ -48,13 +48,13 @@ public class PwsService {
 
     }
 
-    public FindAllPwsDto updateServiceWhereID(Pws pws) {
+    public FindAllPwsDto updateWhereIdassetService(Pws pws) {
         if (pws == null) {
             log.warn("pws cannot be null!");
             throw new RuntimeException("pws cannot be null!");
         }
 
-        boolean flag = repository.modifyWhereID(pws);
+        boolean flag = repository.modifyWhereIdasset(pws);
         if(flag == false)
             log.warn("자산이 업데이트되지 않았습니다.");
         return flag ? findAllService() : null;
@@ -78,24 +78,17 @@ public class PwsService {
         return new FindAllPwsDto(repository.findDisposalAll(search));
     }
 
-    public PwsDto findOneServiceFromIdasset(String managementId) {
+    public PwsDto findOneWhereIdassetService(String managementId) {
 
-        Pws pws = repository.findOneFromIdasset(managementId);
-        log.info("findOneFromIdasset returns data - {}", pws);
-
-        return pws!=null ? new PwsDto(pws) : null;
-    }
-
-    public PwsDto findOneFromSNService(String sn) {
-        Pws pws = repository.findOneFromSN(sn);
-        log.info("findOneFromSNService returns data - {}", pws);
+        Pws pws = repository.findOneWhereIdasset(managementId);
+        log.info("findOneWhereIdassetService returns data - {}", pws);
 
         return pws!=null ? new PwsDto(pws) : null;
     }
 
-    public PwsDto findOneWhereSNService(String id) {
-        Pws pws = repository.findOneWhereId(id);
-        log.info("findOneWhereId returns data - {}", pws);
+    public PwsDto findOneWhereSNService(String sn) {
+        Pws pws = repository.findOneWhereSN(sn);
+        log.info("findOneWhereSNService returns data - {}", pws);
 
         return pws!=null ? new PwsDto(pws) : null;
     }

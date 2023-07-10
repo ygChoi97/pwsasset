@@ -1,9 +1,6 @@
 package com.cnp.pwsasset.pwsreturn.api;
 
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
-import com.cnp.pwsasset.pwsprovision.dto.FindAllPwsProvisionDto;
-import com.cnp.pwsasset.pwsprovision.dto.PwsProvisionDto;
-import com.cnp.pwsasset.pwsprovision.entity.PwsProvision;
 import com.cnp.pwsasset.pwsreturn.dto.FindAllPwsReturnDto;
 import com.cnp.pwsasset.pwsreturn.dto.PwsReturnDto;
 import com.cnp.pwsasset.pwsreturn.entity.PwsReturn;
@@ -41,7 +38,7 @@ public class PwsReturnApiController {
         log.info("/api/return/id/{} GET request!", id);
         if(id == null) return ResponseEntity.badRequest().build();
 
-        PwsReturnDto dto = service.findOneServiceWhereId(id);
+        PwsReturnDto dto = service.findOneWhereIdService(id);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -53,10 +50,10 @@ public class PwsReturnApiController {
         log.info("api/return PUT request!\n{}", pwsReturn);
 
         try {
-            FindAllPwsReturnDto dtos = service.updateServiceWhereID(pwsReturn);
+            FindAllPwsReturnDto dtos = service.updateWhereIDService(pwsReturn);
             return ResponseEntity.ok().body(dtos);
         }catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
@@ -73,7 +70,7 @@ public class PwsReturnApiController {
             return ResponseEntity.ok().body(dtos);
 
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
