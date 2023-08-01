@@ -12,10 +12,9 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 public class RetireeDisk {
-    private int id;                 // 번호
     private String team;            // 팀명
     private String retiree_name;    // 퇴사자
-    private String retiree_id;      // 사번
+    private String retiree_id;      // 사번 (PK)
     private String idasset;         // 자산관리번호
     private String sn;              // S/N
     private String product_name;    // 품명

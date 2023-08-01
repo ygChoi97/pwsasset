@@ -18,84 +18,84 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class VideoEquipmentApiController {
-//    private final VideoEquipmentService service;
-//
-//    @GetMapping
-//    public ResponseEntity<?> findAll() {
-//        log.info("/api/videoequipment GET request!");
-//
-//        FindAllVideoEquipmentDto dtos = service.findAllService();
-//        if(dtos.getCount() < 1) return ResponseEntity.notFound().build();
-//
-//        return ResponseEntity.ok().body(dtos);
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<?> findVideoEquipmentWhereId(@PathVariable String id) {
-//        log.info("/api/videoequipment/id/{} GET request!", id);
-//        if(id == null) return ResponseEntity.badRequest().build();
-//
-//        VideoEquipmentDto dto = service.findOneWhereIDService(id);
-//
-//        if(dto == null) return ResponseEntity.notFound().build();
-//
-//        return ResponseEntity.ok().body(dto);
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<?> create(@RequestBody VideoEquipment videoEquipment) {
-//        log.info("/api/videoequipment/{} POST request!", videoEquipment);
-//
-//        try {
-//            FindAllVideoEquipmentDto dtos = service.createService(videoEquipment);
-//
-//            if (dtos == null)
-//                return ResponseEntity.notFound().build();
-//
-//            return ResponseEntity.ok().body(dtos);
-//
-//        } catch(RuntimeException e) {
-//            return ResponseEntity.badRequest().body(e);
-//        }
-//    }
-//
-//    @PostMapping("/import")
-//    public ResponseEntity<?> updateDB(@RequestBody List<VideoEquipment> list ) {
-//        log.info("/api/videoequipment/import POST request!");
-//
-//        try {
-//            FindAllVideoEquipmentDto dtos = service.importFromExcelService(list);
-//
-//            if (dtos == null)
-//                return ResponseEntity.notFound().build();
-//
-//            return ResponseEntity.ok().body(dtos);
-//
-//        } catch(RuntimeException e) {
-//            return ResponseEntity.badRequest().body(e);
-//        }
-//    }
-//
-//    @PutMapping
-//    public ResponseEntity<?> updateWhereID(@RequestBody VideoEquipment videoEquipment) {
-//        log.info("api/videoequipment PUT request!\n{}", videoEquipment);
-//
-//        try {
-//            FindAllVideoEquipmentDto dtos = service.updateWhereIDService(videoEquipment);
-//            return ResponseEntity.ok().body(dtos);
-//        }catch (RuntimeException e) {
-//            return ResponseEntity.badRequest().body(e);
-//        }
-//    }
-//
-//    @GetMapping("/menu")
-//    public ResponseEntity<?> findVideoEquipmentMenu() {
-//        log.info("/api/videoequipment/menu GET request!");
-//
-//        List<ItemNameOfAssetDTO> column_info = service.queryColumnCommentService();
-//
-//        if(column_info == null) ResponseEntity.notFound().build();
-//
-//        return ResponseEntity.ok().body(column_info);
-//    }
+    private final VideoEquipmentService service;
+
+    @GetMapping
+    public ResponseEntity<?> findAll() {
+        log.info("/api/videoequipment GET request!");
+
+        FindAllVideoEquipmentDto dtos = service.findAllService();
+        if(dtos.getCount() < 1) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dtos);
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> findVideoEquipmentWhereId(@PathVariable String id) {
+        log.info("/api/videoequipment/id/{} GET request!", id);
+        if(id == null) return ResponseEntity.badRequest().build();
+
+        VideoEquipmentDto dto = service.findOneWhereIDService(id);
+
+        if(dto == null) return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody VideoEquipment videoEquipment) {
+        log.info("/api/videoequipment/{} POST request!", videoEquipment);
+
+        try {
+            FindAllVideoEquipmentDto dtos = service.createService(videoEquipment);
+
+            if (dtos == null)
+                return ResponseEntity.notFound().build();
+
+            return ResponseEntity.ok().body(dtos);
+
+        } catch(RuntimeException e) {
+            return ResponseEntity.badRequest().body(e);
+        }
+    }
+
+    @PostMapping("/import")
+    public ResponseEntity<?> updateDB(@RequestBody List<VideoEquipment> list ) {
+        log.info("/api/videoequipment/import POST request!");
+
+        try {
+            FindAllVideoEquipmentDto dtos = service.importFromExcelService(list);
+
+            if (dtos == null)
+                return ResponseEntity.notFound().build();
+
+            return ResponseEntity.ok().body(dtos);
+
+        } catch(RuntimeException e) {
+            return ResponseEntity.badRequest().body(e);
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateWhereID(@RequestBody VideoEquipment videoEquipment) {
+        log.info("api/videoequipment PUT request!\n{}", videoEquipment);
+
+        try {
+            FindAllVideoEquipmentDto dtos = service.updateWhereIDService(videoEquipment);
+            return ResponseEntity.ok().body(dtos);
+        }catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e);
+        }
+    }
+
+    @GetMapping("/menu")
+    public ResponseEntity<?> findVideoEquipmentMenu() {
+        log.info("/api/videoequipment/menu GET request!");
+
+        List<ItemNameOfAssetDTO> column_info = service.queryColumnCommentService();
+
+        if(column_info == null) ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().body(column_info);
+    }
 }

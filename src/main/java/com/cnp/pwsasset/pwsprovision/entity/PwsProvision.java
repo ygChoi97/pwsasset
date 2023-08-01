@@ -15,6 +15,7 @@ public class PwsProvision {
     private String centercd;
     private String headteam;
     private String center;
+    private String classification;  // 자산구분
     private String headquarters;
     private String sysadmin;
     private String idsysadmin;
@@ -23,10 +24,10 @@ public class PwsProvision {
     private String sn;
     private String manager;
     private String idmanager;
-    private String areainstall;
+    private String area;
     private String locinstall;
     private String model;
-    private Date   period;
+    private Date   perioddate;
     private String reason;
     private Date   joiningdate;
     private Date   applicationdate;

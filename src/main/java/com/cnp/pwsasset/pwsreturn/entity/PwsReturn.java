@@ -11,6 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class PwsReturn {
     private String id;
+    private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String hoteam;
     private String housername;

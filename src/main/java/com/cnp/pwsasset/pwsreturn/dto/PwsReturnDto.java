@@ -9,6 +9,7 @@ import java.util.Date;
 @NoArgsConstructor @AllArgsConstructor
 public class PwsReturnDto {
     private String id;
+    private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String hoteam;
     private String housername;
@@ -27,6 +28,7 @@ public class PwsReturnDto {
     private Date returndate;
     public PwsReturnDto(PwsReturn pwsReturn) {
         id = pwsReturn.getId();
+        classification = pwsReturn.getClassification();
         headquarters = pwsReturn.getHeadquarters();
         hoteam = pwsReturn.getHoteam();
         housername = pwsReturn.getHousername();

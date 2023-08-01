@@ -8,8 +8,9 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class MemoryDto {
-    private int id;                 // 번호
+    private int id;                 // 번호 (PK)
     private String company;         // 회사명
+    private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String idasset;         // 자산관리번호
     private String model;           // 모델명
@@ -18,18 +19,19 @@ public class MemoryDto {
     private String team;            // 팀명
     private String manager;         // 담당자
     private String location;        // 위치
-    private String uptake;          // 사용구분
+    private String object;          // 사용구분
     private Date application_date;  // 지원일자
-    private int GB4;                // 4GB
-    private int GB8;                // 8GB
-    private int GB16;               // 16GB
-    private int GB32;               // 32GB
+    private int gb4;                // 4gb
+    private int gb8;                // 8gb
+    private int gb16;               // 16gb
+    private int gb32;               // 32gb
     private String volume;          // 증설용량
     private String note;            // 비고
 
     public MemoryDto(Memory memory) {
         id = memory.getId();
         company = memory.getCompany();
+        classification = memory.getClassification();
         headquarters = memory.getHeadquarters();
         idasset = memory.getIdasset();
         model = memory.getModel();
@@ -38,12 +40,12 @@ public class MemoryDto {
         team = memory.getTeam();
         manager = memory.getManager();
         location = memory.getLocation();
-        uptake = memory.getUptake();
+        object = memory.getObject();
         application_date = memory.getApplication_date();
-        GB4 = memory.getGB4();
-        GB8 = memory.getGB8();
-        GB16 = memory.getGB16();
-        GB32 = memory.getGB32();
+        gb4 = memory.getGb4();
+        gb8 = memory.getGb8();
+        gb16 = memory.getGb16();
+        gb32 = memory.getGb32();
         volume = memory.getVolume();
         note = memory.getNote();
     }

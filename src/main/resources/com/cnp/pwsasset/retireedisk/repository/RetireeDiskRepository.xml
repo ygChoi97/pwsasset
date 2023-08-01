@@ -4,4 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnp.pwsasset.retireedisk.repository.RetireeDiskRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.retireedisk.entity.RetireeDisk">
+        select * from retiree_disk
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='retiree_disk'
+    </select>
+
+    <insert id="insertData" parameterType="java.util.List">
+        insert into retiree_disk (team, retiree_name, retiree_id, idasset, sn, product_name, area, return_date, resign_date, hdd1, hdd2, hdd3, hdd4, hdd_volume, return_name, return_id, handover_date, handover_name, security_date, manager_date, acceptor, box_no, note)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.team}, #{item.retiree_name}, #{item.retiree_id}, #{item.idasset}, #{item.sn}, #{item.product_name}, #{item.area}, #{item.return_date}, #{item.resign_date}, #{item.hdd1}, #{item.hdd2}, #{item.hdd3}, #{item.hdd4}, #{item.hdd_volume}, #{item.return_name}, #{item.return_id}, #{item.handover_date}, #{item.handover_name}, #{item.security_date}, #{item.manager_date}, #{item.acceptor}, #{item.box_no}, #{item.note})
+        </foreach>
+        on duplicate key update team=values(team), retiree_name=values(retiree_name), idasset=values(idasset), sn=values(sn), product_name=values(product_name), area=values(area), return_date=values(return_date), resign_date=values(resign_date), hdd1=values(hdd1), hdd2=values(hdd2), hdd3=values(hdd3), hdd4=values(hdd4), hdd_volume=values(hdd_volume), return_name=values(return_name), return_id=values(return_id), handover_date=values(handover_date), handover_name=values(handover_name), security_date=values(security_date), manager_date=values(manager_date), acceptor=values(acceptor), box_no=values(box_no), note=values(note)
+    </insert>
+
+    <select id="findOneWhereRetireeId" resultType="com.cnp.pwsasset.retireedisk.entity.RetireeDisk">
+        select * from retiree_disk where retiree_id=#{retiree_id}
+    </select>
+
+    <update id="modifyWhereID">
+        update retiree_disk
+        set team=#{team}, retiree_name=#{retiree_name}, retiree_id=#{retiree_id}, idasset=#{idasset}, sn=#{sn}, product_name=#{product_name}, area=#{area}, return_date=#{return_date}, resign_date=#{resign_date}, hdd1=#{hdd1}, hdd2=#{hdd2}, hdd3=#{hdd3}, hdd4=#{hdd4}, hdd_volume=#{hdd_volume}, return_name=#{return_name}, return_id=#{return_id}, handover_date=#{handover_date}, handover_name=#{handover_name}, security_date=#{security_date}, manager_date=#{manager_date}, acceptor=#{acceptor}, box_no=#{box_no}, note=#{note}
+        where retiree_id=#{retiree_id}
+    </update>
 </mapper>

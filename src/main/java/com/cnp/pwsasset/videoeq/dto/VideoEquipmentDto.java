@@ -10,6 +10,7 @@ import java.util.Date;
 public class VideoEquipmentDto {
     private int id;                     // 번호
     private String company;             // 회사명
+    private String classification;      // 자산구분
     private String headquarters;        // 본부
     private String idasset;             // 자산관리번호
     private String model;               // 모델명
@@ -26,6 +27,7 @@ public class VideoEquipmentDto {
     private Date provision_date;        // 지급일
     private int headset;                // 헤드셋
     private int webcam;                 // 웹캠
+    private int usbgender;              // USB젠더
     private String replacement_goods;   // 고장교체품목
     private String reason;              // 지급사유
     private String note;                // 비고
@@ -33,6 +35,7 @@ public class VideoEquipmentDto {
     public VideoEquipmentDto(VideoEquipment videoEquipment) {
         id = videoEquipment.getId();
         company = videoEquipment.getCompany();
+        classification = videoEquipment.getClassification();
         headquarters = videoEquipment.getHeadquarters();
         idasset = videoEquipment.getIdasset();
         model = videoEquipment.getModel();
@@ -49,6 +52,7 @@ public class VideoEquipmentDto {
         provision_date = videoEquipment.getProvision_date();
         headset = videoEquipment.getHeadset();
         webcam = videoEquipment.getWebcam();
+        usbgender = videoEquipment.getUsbgender();
         replacement_goods = videoEquipment.getReplacement_goods();
         reason = videoEquipment.getReason();
         note = videoEquipment.getNote();

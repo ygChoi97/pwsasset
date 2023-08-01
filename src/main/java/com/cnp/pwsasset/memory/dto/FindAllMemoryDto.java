@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FindAllMemoryDto {
     private int count;
-    private List<MemoryDto> memoryDtoList;
+    private List<MemoryDto> memoryDtos;
 
     public FindAllMemoryDto(List<Memory> memoryList) {
         this.count = memoryList.size();
@@ -26,6 +26,6 @@ public class FindAllMemoryDto {
         for(Memory memory : memoryList) {
             dtos.add(new MemoryDto(memory));
         }
-        this.memoryDtoList = dtos;
+        this.memoryDtos = dtos;
     }
 }

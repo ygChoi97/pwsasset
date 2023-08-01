@@ -9,6 +9,7 @@ import java.util.Date;
 @NoArgsConstructor @AllArgsConstructor
 public class DiskRestorationDto {
     private int id;                             // 번호
+    private String classification;              // 자산구분
     private String headquarters;                // 본부
     private String center;                      // 센터
     private String team;                        // 팀
@@ -38,6 +39,7 @@ public class DiskRestorationDto {
 
     public DiskRestorationDto(DiskRestoration diskRestoration) {
         id = diskRestoration.getId();
+        classification = diskRestoration.getClassification();
         headquarters = diskRestoration.getHeadquarters();
         center = diskRestoration.getCenter();
         team = diskRestoration.getTeam();

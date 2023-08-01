@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class DiskRestoration {
     private int id;                             // 번호
+    private String classification;              // 자산구분
     private String headquarters;                // 본부
     private String center;                      // 센터
     private String team;                        // 팀

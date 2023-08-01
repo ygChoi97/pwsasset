@@ -14,6 +14,7 @@ import java.util.Date;
 public class HardDisk {
     private int id;                 // 번호
     private String company;         // 회사명
+    private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String idasset;         // 자산관리번호
     private String model;           // 모델명
@@ -22,7 +23,7 @@ public class HardDisk {
     private String team;            // 팀명
     private String manager;         // 담당자
     private String location;        // 위치
-    private String uptake;          // 사용구분
+    private String object;          // 사용구분
     private Date application_date;  // 지원일자
     private int ssd_500gb;          // 500GB SSD
     private int sata_1tb;           // 1TB SATA

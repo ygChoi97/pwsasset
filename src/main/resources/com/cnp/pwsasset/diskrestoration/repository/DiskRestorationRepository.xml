@@ -4,4 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnp.pwsasset.diskrestoration.repository.DiskRestorationRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.diskrestoration.entity.DiskRestoration">
+        select * from disk_restoration
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='disk_restoration'
+    </select>
+
+    <insert id="insertData" parameterType="java.util.List">
+        insert into disk_restoration (id, classification, headquarters, center, team, requestor, model, idasset, sn, area, building, storey, location, request_hdd_sn, replacement_hdd, attatchment, trouble_notice_date, request_hdd_receipt_date, request_hdd_carryin_date, replacement_hdd_carryin_date, request_hdd_carryout_date, load_date, replacement_hdd_format_date, replacement_hdd_carryout_date, request_hdd_deggousing_date, request_hdd_disuse_date, status, note)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.classification}, #{item.headquarters}, #{item.center}, #{item.team}, #{item.requestor}, #{item.model}, #{item.idasset}, #{item.sn}, #{item.area}, #{item.building}, #{item.storey}, #{item.location}, #{item.request_hdd_sn}, #{item.replacement_hdd}, #{item.attatchment}, #{item.trouble_notice_date}, #{item.request_hdd_receipt_date}, #{item.request_hdd_carryin_date}, #{item.replacement_hdd_carryin_date}, #{item.request_hdd_carryout_date}, #{item.load_date}, #{item.replacement_hdd_format_date}, #{item.replacement_hdd_carryout_date}, #{item.request_hdd_deggousing_date}, #{item.request_hdd_disuse_date}, #{item.status}, #{item.note})
+        </foreach>
+        on duplicate key update classification=values(classification), headquarters=values(headquarters), center=values(center), team=values(team), requestor=values(requestor), model=values(model), idasset=values(idasset), sn=values(sn), area=values(area), building=values(building), storey=values(storey), location=values(location), request_hdd_sn=values(request_hdd_sn), replacement_hdd=values(replacement_hdd), attatchment=values(attatchment), trouble_notice_date=values(trouble_notice_date), request_hdd_receipt_date=values(request_hdd_receipt_date), request_hdd_carryin_date=values(request_hdd_carryin_date), replacement_hdd_carryin_date=values(replacement_hdd_carryin_date), request_hdd_carryout_date=values(request_hdd_carryout_date), load_date=values(load_date), replacement_hdd_format_date=values(replacement_hdd_format_date), replacement_hdd_carryout_date=values(replacement_hdd_carryout_date), request_hdd_deggousing_date=values(request_hdd_deggousing_date), request_hdd_disuse_date=values(request_hdd_disuse_date), status=values(status), note=values(note)
+    </insert>
+
+    <select id="findOneWhereId" resultType="com.cnp.pwsasset.diskrestoration.entity.DiskRestoration">
+        select * from disk_restoration where id=#{id}
+    </select>
+
+    <update id="modifyWhereID">
+        update disk_restoration
+        set classification=#{classification}, headquarters=#{headquarters}, center=#{center}, team=#{team}, requestor=#{requestor}, model=#{model}, idasset=#{idasset}, sn=#{sn}, area=#{area}, building=#{building}, storey=#{storey}, location=#{location}, request_hdd_sn=#{request_hdd_sn}, replacement_hdd=#{replacement_hdd}, attatchment=#{attatchment}, trouble_notice_date=#{trouble_notice_date}, request_hdd_receipt_date=#{request_hdd_receipt_date}, request_hdd_carryin_date=#{request_hdd_carryin_date}, replacement_hdd_carryin_date=#{replacement_hdd_carryin_date}, request_hdd_carryout_date=#{request_hdd_carryout_date}, load_date=#{load_date}, replacement_hdd_format_date=#{replacement_hdd_format_date}, replacement_hdd_carryout_date=#{replacement_hdd_carryout_date}, request_hdd_deggousing_date=#{request_hdd_deggousing_date}, request_hdd_disuse_date=#{request_hdd_disuse_date}, status=#{status}, note=#{note}
+        where id=#{id}
+    </update>
 </mapper>

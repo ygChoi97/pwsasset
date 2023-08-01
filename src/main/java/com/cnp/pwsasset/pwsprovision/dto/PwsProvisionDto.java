@@ -13,6 +13,7 @@ public class PwsProvisionDto {
     private String centercd;
     private String headteam;
     private String center;
+    private String classification;  // 자산구분
     private String headquarters;
     private String sysadmin;
     private String idsysadmin;
@@ -21,10 +22,10 @@ public class PwsProvisionDto {
     private String sn;
     private String manager;
     private String idmanager;
-    private String areainstall;
+    private String area;
     private String locinstall;
     private String model;
-    private Date period;
+    private Date perioddate;
     private String reason;
     private Date   joiningdate;
     private Date   applicationdate;
@@ -37,6 +38,7 @@ public class PwsProvisionDto {
         centercd = pwsProvision.getCentercd();
         headteam = pwsProvision.getHeadteam();
         center = pwsProvision.getCenter();
+        classification = pwsProvision.getClassification();
         headquarters = pwsProvision.getHeadquarters();
         sysadmin = pwsProvision.getSysadmin();
         idsysadmin = pwsProvision.getIdsysadmin();
@@ -45,10 +47,10 @@ public class PwsProvisionDto {
         sn = pwsProvision.getSn();
         manager = pwsProvision.getManager();
         idmanager = pwsProvision.getIdmanager();
-        areainstall = pwsProvision.getAreainstall();
+        area = pwsProvision.getArea();
         locinstall = pwsProvision.getLocinstall();
         model = pwsProvision.getModel();
-        period = pwsProvision.getPeriod();
+        perioddate = pwsProvision.getPerioddate();
         reason = pwsProvision.getReason();
         joiningdate = pwsProvision.getJoiningdate();
         applicationdate = pwsProvision.getApplicationdate();

@@ -4,4 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnp.pwsasset.harddisk.repository.HardDiskRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.harddisk.entity.HardDisk">
+        select * from harddisk
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='harddisk'
+    </select>
+
+    <insert id="insertData" parameterType="java.util.List">
+        insert into harddisk (id, company, classification, headquarters, idasset, model, introduction_date, area, team, manager, location, object, application_date, ssd_500gb, sata_1tb, m2_512gb, sata_2tb, note)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.company}, #{item.classification}, #{item.headquarters}, #{item.idasset}, #{item.model}, #{item.introduction_date}, #{item.area}, #{item.team}, #{item.manager}, #{item.location}, #{item.object}, #{item.application_date}, #{item.ssd_500gb}, #{item.sata_1tb}, #{item.m2_512gb}, #{item.sata_2tb}, #{item.note})
+        </foreach>
+        on duplicate key update company=values(company), classification=values(classification), headquarters=values(headquarters), idasset=values(idasset), model=values(model), introduction_date=values(introduction_date), area=values(area), team=values(team), manager=values(manager), location=values(location), object=values(object), application_date=values(application_date), ssd_500gb=values(ssd_500gb), sata_1tb=values(sata_1tb), m2_512gb=values(m2_512gb), sata_2tb=values(sata_2tb), note=values(note)
+    </insert>
+
+    <select id="findOneWhereId" resultType="com.cnp.pwsasset.harddisk.entity.HardDisk">
+        select * from harddisk where id=#{id}
+    </select>
+
+    <update id="modifyWhereID">
+        update harddisk
+        set company=#{company}, classification=#{classification}, headquarters=#{headquarters}, idasset=#{idasset}, model=#{model}, introduction_date=#{introduction_date}, area=#{area}, team=#{team}, manager=#{manager}, location=#{location}, object=#{object}, application_date=#{application_date}, ssd_500gb=#{ssd_500gb}, sata_1tb=#{sata_1tb}, m2_512gb=#{m2_512gb}, sata_2tb=#{sata_2tb}, note=#{note}
+        where id=#{id}
+    </update>
 </mapper>

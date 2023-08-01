@@ -14,6 +14,7 @@ import java.util.Date;
 public class VideoEquipment {
     private int id;                     // 번호
     private String company;             // 회사명
+    private String classification;      // 자산구분
     private String headquarters;        // 본부
     private String idasset;             // 자산관리번호
     private String model;               // 모델명
@@ -30,6 +31,7 @@ public class VideoEquipment {
     private Date provision_date;        // 지급일
     private int headset;                // 헤드셋
     private int webcam;                 // 웹캠
+    private int usbgender;              // USB젠더
     private String replacement_goods;   // 고장교체품목
     private String reason;              // 지급사유
     private String note;                // 비고

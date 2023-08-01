@@ -4,4 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cnp.pwsasset.videoeq.repository.VideoEquipmentRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.videoeq.entity.VideoEquipment">
+        select * from video_equipment
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='video_equipment'
+    </select>
+
+    <insert id="insertData" parameterType="java.util.List">
+        insert into video_equipment (id, company, classification, headquarters, idasset, model, introduction_date, team, requestor, requestor_id, user_name, user_id, area, building, storey, request_date, provision_date, headset, webcam, usbgender, replacement_goods, reason, note)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.company}, #{item.classification}, #{item.headquarters}, #{item.idasset}, #{item.model}, #{item.introduction_date}, #{item.team}, #{item.requestor}, #{item.requestor_id}, #{item.user_name}, #{item.user_id}, #{item.area}, #{item.building}, #{item.storey}, #{item.request_date}, #{item.provision_date}, #{item.headset}, #{item.webcam}, #{item.usbgender}, #{item.replacement_goods}, #{item.reason}, #{item.note})
+        </foreach>
+        on duplicate key update company=values(company), classification=values(classification), headquarters=values(headquarters), idasset=values(idasset), model=values(model), introduction_date=values(introduction_date), team=values(team), requestor=values(requestor), requestor_id=values(requestor_id), user_name=values(user_name), user_id=values(user_id), area=values(area), building=values(building), storey=values(storey), request_date=values(request_date), provision_date=values(provision_date), headset=values(headset), webcam=values(webcam), usbgender=values(usbgender), replacement_goods=values(replacement_goods), reason=values(reason), note=values(note)
+    </insert>
+
+    <select id="findOneWhereId" resultType="com.cnp.pwsasset.videoeq.entity.VideoEquipment">
+        select * from video_equipment where id=#{id}
+    </select>
+
+    <update id="modifyWhereID">
+        update video_equipment
+        set company=#{company}, classification=#{classification}, headquarters=#{headquarters}, idasset=#{idasset}, model=#{model}, introduction_date=#{introduction_date}, team=#{team}, requestor=#{requestor}, requestor_id=#{requestor_id}, user_name=#{user_name}, user_id=#{user_id}, area=#{area}, building=#{building}, storey=#{storey}, request_date=#{request_date}, provision_date=#{provision_date}, headset=#{headset}, webcam=#{webcam}, usbgender=#{usbgender}, replacement_goods=#{replacement_goods}, reason=#{reason}, note=#{note}
+        where id=#{id}
+    </update>
 </mapper>

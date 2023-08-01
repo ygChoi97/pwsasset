@@ -2,9 +2,11 @@ package com.cnp.pwsasset.harddisk.repository;
 
 import com.cnp.pwsasset.harddisk.entity.HardDisk;
 import com.cnp.pwsasset.pws.dto.ItemNameOfAssetDTO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface HardDiskRepository {
     List<HardDisk> findAll();
 

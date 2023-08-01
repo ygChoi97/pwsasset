@@ -8,10 +8,9 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class RetireeDiskDto {
-    private int id;                 // 번호
     private String team;            // 팀명
     private String retiree_name;    // 퇴사자
-    private String retiree_id;      // 사번
+    private String retiree_id;      // 사번 (PK)
     private String idasset;         // 자산관리번호
     private String sn;              // S/N
     private String product_name;    // 품명
@@ -34,7 +33,6 @@ public class RetireeDiskDto {
     private String note;            // 비고
 
     public RetireeDiskDto(RetireeDisk retireeDisk) {
-        id = retireeDisk.getId();
         team = retireeDisk.getTeam();
         retiree_name = retireeDisk.getRetiree_name();
         retiree_id = retireeDisk.getRetiree_id();

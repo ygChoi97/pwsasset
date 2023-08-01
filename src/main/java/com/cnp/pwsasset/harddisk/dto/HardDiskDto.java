@@ -10,6 +10,7 @@ import java.util.Date;
 public class HardDiskDto {
     private int id;                 // 번호
     private String company;         // 회사명
+    private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String idasset;         // 자산관리번호
     private String model;           // 모델명
@@ -18,7 +19,7 @@ public class HardDiskDto {
     private String team;            // 팀명
     private String manager;         // 담당자
     private String location;        // 위치
-    private String uptake;          // 사용구분
+    private String object;          // 사용구분
     private Date application_date;  // 지원일자
     private int ssd_500gb;          // 500GB SSD
     private int sata_1tb;           // 1TB SATA
@@ -29,6 +30,7 @@ public class HardDiskDto {
     public HardDiskDto(HardDisk hardDisk) {
         id = hardDisk.getId();
         company = hardDisk.getCompany();
+        classification = hardDisk.getClassification();
         headquarters = hardDisk.getHeadquarters();
         idasset = hardDisk.getIdasset();
         model = hardDisk.getModel();
@@ -37,7 +39,7 @@ public class HardDiskDto {
         team = hardDisk.getTeam();
         manager = hardDisk.getManager();
         location = hardDisk.getLocation();
-        uptake = hardDisk.getUptake();
+        object = hardDisk.getObject();
         application_date = hardDisk.getApplication_date();
         ssd_500gb = hardDisk.getSsd_500gb();
         sata_1tb = hardDisk.getSata_1tb();
