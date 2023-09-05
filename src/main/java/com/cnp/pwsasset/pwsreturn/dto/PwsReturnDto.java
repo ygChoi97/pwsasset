@@ -8,7 +8,7 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsReturnDto {
-    private String id;
+    private int id;
     private String classification;  // 자산구분
     private String headquarters;    // 본부
     private String hoteam;

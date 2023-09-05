@@ -14,12 +14,12 @@
     </select>
 
     <insert id="insertData" parameterType="java.util.List">
-        insert into pwsprovision (id, department, centercd, headteam, center, classification, headquarters, sysadmin, idsysadmin, assetno, idasset, sn, manager, idmanager, area, locinstall, model, perioddate, reason, joiningdate, applicationdate, provisiondate, note)
+        insert into pwsprovision (id, classification, department, centercd, headteam, center, headquarters, sysadmin, idsysadmin, assetno, idasset, sn, manager, idmanager, area, locinstall, model, perioddate, reason, joiningdate, applicationdate, provisiondate, note)
         values
         <foreach collection="list" item="item" separator=",">
-            (#{item.id}, #{item.department}, #{item.centercd}, #{item.headteam}, #{item.center}, #{item.classification}, #{item.headquarters}, #{item.sysadmin}, #{item.idsysadmin}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.manager}, #{item.idmanager}, #{item.area}, #{item.locinstall}, #{item.model}, #{item.perioddate}, #{item.reason}, #{item.joiningdate}, #{item.applicationdate}, #{item.provisiondate}, #{item.note})
+            (#{item.id}, #{item.classification}, #{item.department}, #{item.centercd}, #{item.headteam}, #{item.center}, #{item.headquarters}, #{item.sysadmin}, #{item.idsysadmin}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.manager}, #{item.idmanager}, #{item.area}, #{item.locinstall}, #{item.model}, #{item.perioddate}, #{item.reason}, #{item.joiningdate}, #{item.applicationdate}, #{item.provisiondate}, #{item.note})
         </foreach>
-        on duplicate key update department=values(department), centercd=values(centercd), headteam=values(headteam), center=values(center) classification=values(classification), headquarters=values(headquarters), sysadmin=values(sysadmin), idsysadmin=values(idsysadmin), assetno=values(assetno), idasset=values(idasset), sn=values(sn), manager=values(manager), idmanager=values(idmanager), area=values(area), locinstall=values(locinstall), model=values(model), perioddate=values(perioddate), reason=values(reason), joiningdate=values(joiningdate), applicationdate=values(applicationdate), provisiondate=values(provisiondate), note=values(note)
+        on duplicate key update classification=values(classification), department=values(department), centercd=values(centercd), headteam=values(headteam), center=values(center), headquarters=values(headquarters), sysadmin=values(sysadmin), idsysadmin=values(idsysadmin), assetno=values(assetno), idasset=values(idasset), sn=values(sn), manager=values(manager), idmanager=values(idmanager), area=values(area), locinstall=values(locinstall), model=values(model), perioddate=values(perioddate), reason=values(reason), joiningdate=values(joiningdate), applicationdate=values(applicationdate), provisiondate=values(provisiondate), note=values(note)
     </insert>
 
     <select id="findOneWhereId" resultType="com.cnp.pwsasset.pwsprovision.entity.PwsProvision">
@@ -28,7 +28,7 @@
 
     <update id="modifyWhereID">
         update pwsprovision
-        set department=#{department}, centercd=#{centercd}, headteam=#{headteam}, center=#{center}, classification=#{classification}, headquarters=#{headquarters}, sysadmin=#{sysadmin}, idsysadmin=#{idsysadmin}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, manager=#{manager}, idmanager=#{idmanager}, area=#{area}, locinstall=#{locinstall}, model=#{model}, perioddate=#{perioddate}, reason=#{reason}, joiningdate=#{joiningdate}, applicationdate=#{applicationdate}, provisiondate=#{provisiondate}, note=#{note}
+        set classification=#{classification}, department=#{department}, centercd=#{centercd}, headteam=#{headteam}, center=#{center}, headquarters=#{headquarters}, sysadmin=#{sysadmin}, idsysadmin=#{idsysadmin}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, manager=#{manager}, idmanager=#{idmanager}, area=#{area}, locinstall=#{locinstall}, model=#{model}, perioddate=#{perioddate}, reason=#{reason}, joiningdate=#{joiningdate}, applicationdate=#{applicationdate}, provisiondate=#{provisiondate}, note=#{note}
         where id=#{id}
     </update>
 </mapper>

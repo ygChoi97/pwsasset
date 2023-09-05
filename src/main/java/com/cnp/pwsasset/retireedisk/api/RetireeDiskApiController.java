@@ -30,12 +30,12 @@ public class RetireeDiskApiController {
         return ResponseEntity.ok().body(dtos);
     }
 
-    @GetMapping("/retiree_id/{retiree_id}")
-    public ResponseEntity<?> findRetireeDiskWhereRetiree_id(@PathVariable String retiree_id) {
-        log.info("/api/retireedisk/retiree_id/{} GET request!", retiree_id);
-        if(retiree_id == null) return ResponseEntity.badRequest().build();
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> findRetireeDiskWhereId(@PathVariable String id) {
+        log.info("/api/retireedisk/id/{} GET request!", id);
+        if(id == null) return ResponseEntity.badRequest().build();
 
-        RetireeDiskDto dto = service.findOneWhereRetireeIdService(retiree_id);
+        RetireeDiskDto dto = service.findOneWhereIdService(id);
 
         if(dto == null) return ResponseEntity.notFound().build();
 
@@ -62,7 +62,7 @@ public class RetireeDiskApiController {
     @PostMapping("/import")
     public ResponseEntity<?> updateDB(@RequestBody List<RetireeDisk> list ) {
         log.info("/api/retireedisk/import POST request!");
-
+        if(list.size() == 0) return ResponseEntity.notFound().build();
         try {
             FindAllRetireeDiskDto dtos = service.importFromExcelService(list);
 

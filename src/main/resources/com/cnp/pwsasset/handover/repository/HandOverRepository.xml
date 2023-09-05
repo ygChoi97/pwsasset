@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnp.pwsasset.handover.repository.HandOverRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.handover.entity.HandOver">
+        select * from handover
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='handover'
+    </select>
+
+    <insert id="insertData" parameterType="com.cnp.pwsasset.handover.entity.HandOver">
+        insert into handover (applicant_team, applicant, applicant_date, area, it_admin_id, it_admin_name, it_admin_phone, asset_admin_id, asset_admin_name, asset_admin_phone)
+        values (#{applicant_team}, #{applicant}, #{applicant_date}, #{area}, #{it_admin_id}, #{it_admin_name}, #{it_admin_phone}, #{asset_admin_id}, #{asset_admin_name}, #{asset_admin_phone})
+        on duplicate key update area=values(area), it_admin_id=values(it_admin_id), it_admin_name=values(it_admin_name), asset_admin_id=values(asset_admin_id), asset_admin_name=values(asset_admin_name), asset_admin_phone=values(asset_admin_phone)
+    </insert>
+
+    <select id="findOne" resultType="com.cnp.pwsasset.handover.entity.HandOver">
+        select * from handover where applicant_team=#{applicant_team} and applicant=#{applicant} and applicant_date=#{applicant_date}
+    </select>
+
+    <update id="modify">
+        update handover
+        set area=#{area}, it_admin_id=#{it_admin_id}, it_admin_name=#{it_admin_name}, it_admin_phone=#{it_admin_phone}, asset_admin_id=#{asset_admin_id}, asset_admin_name=#{asset_admin_name}, asset_admin_phone=#{asset_admin_phone}
+        where applicant_team=#{applicant_team} and applicant=#{applicant} and applicant_date=#{applicant_date}
+    </update>
+</mapper>

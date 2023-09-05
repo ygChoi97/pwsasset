@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnp.pwsasset.handoverequipment.repository.HandOverEquipmentRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.handoverequipment.entity.HandOverEquiqment">
+        select * from handoverequipment
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='handoverequipment'
+    </select>
+
+    <insert id="insertData" parameterType="java.util.List">
+        insert into handoverequipment (applicant_date, area_code, area, career_type, joinning_date, id, position, user, headquerters, center, teamcode, team, business, phone, location, keyboard, mouse_type, mouse_direction, headset, webcam, purpose, it_admin_id, it_admin_name, it_admin_phone, asset_admin_id, asset_admin_name, asset_admin_phone, num, applicant_team, applicant)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.applicant_date}, #{item.area_code}, #{item.area}, #{item.career_type}, #{item.joinning_date}, #{item.id}, #{item.position}, #{item.user}, #{item.headquerters}, #{item.center}, #{item.teamcode}, #{item.team}, #{item.business}, #{item.phone}, #{item.location}, #{item.keyboard}, #{item.mouse_type}, #{item.mouse_direction}, #{item.headset}, #{item.webcam}, #{item.purpose}, #{item.it_admin_id}, #{item.it_admin_name}, #{item.it_admin_phone}, #{item.asset_admin_id}, #{item.asset_admin_name}, #{item.asset_admin_phone}, #{item.num}, #{item.applicant_team}, #{item.applicant})
+        </foreach>
+        on duplicate key update area_code=values(area_code), area=values(area), career_type=values(career_type), joinning_date=values(joinning_date), id=values(id), position=values(position), user=values(user), headquerters=values(headquerters), center=values(center), teamcode=values(teamcode), team=values(team), business=values(business), phone=values(phone), location=values(location), keyboard=values(keyboard), mouse_type=values(mouse_type), mouse_direction=values(mouse_direction), headset=values(headset), webcam=values(webcam), purpose=values(purpose), it_admin_id=values(it_admin_id), it_admin_name=values(it_admin_name), it_admin_phone=values(it_admin_phone), asset_admin_id=values(asset_admin_id), asset_admin_name=values(asset_admin_name), asset_admin_phone=values(asset_admin_phone)
+    </insert>
+
+    <select id="findOne" resultType="com.cnp.pwsasset.handoverequipment.entity.HandOverEquiqment">
+        select * from handoverequipment where num=#{num} and applicant_team=#{applicant_team} and applicant=#{applicant} and applicant_date=#{applicant_date}
+    </select>
+
+    <select id="findWhereApplicantInfo" resultType="com.cnp.pwsasset.handoverequipment.entity.HandOverEquiqment">
+        select * from handoverequipment where applicant_team=#{applicant_team} and applicant=#{applicant} and applicant_date=#{applicant_date}
+    </select>
+    <update id="modify">
+        update handoverequipment
+        set applicant_date=#{applicant_date}, area_code=#{area_code}, area=#{area}, career_type=#{career_type}, joinning_date=#{joinning_date}, id=#{id}, position=#{position}, user=#{user}, headquerters=#{headquerters}, center=#{center}, teamcode=#{teamcode}, team=#{team}, business=#{business}, phone=#{phone}, location=#{location}, keyboard=#{keyboard}, mouse_type=#{mouse_type}, mouse_direction=#{mouse_direction}, headset=#{headset}, webcam=#{webcam}, purpose=#{purpose}, it_admin_id=#{it_admin_id}, it_admin_name=#{it_admin_name}, it_admin_phone=#{it_admin_phone}, asset_admin_id=#{asset_admin_id}, asset_admin_name=#{asset_admin_name}, asset_admin_phone=#{asset_admin_phone}
+        where num=#{num} and applicant_team=#{applicant_team} and applicant=#{applicant} and applicant_date=#{applicant_date}
+    </update>
+</mapper>

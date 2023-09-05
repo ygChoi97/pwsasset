@@ -52,7 +52,7 @@ public class MemoryService {
         }
         boolean flag = repository.insertData(list);
 
-        if(flag) log.info("메모리자료 {}개 항목이 추가/업데이트되었습니다.", list.size());
+        if(flag) log.info("메모리자료 {}개 항목이 추가/업데이트되었습니다. {}", list.size(), list);
         if(flag == false)
             log.warn("메모리자료가 업데이트되지 않았습니다.");
 

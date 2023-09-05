@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cnp.pwsasset.return_form.repository.ReturnFormRepository">
+    <select id="findAll" resultType="com.cnp.pwsasset.return_form.entity.ReturnForm">
+        select * from return_form
+    </select>
+
+    <select id="queryColumnComment" resultType="HashMap">
+        select column_name, column_comment from information_schema.columns where table_name='return_form'
+    </select>
+
+    <insert id="insertData" parameterType="com.cnp.pwsasset.return_form.entity.ReturnForm">
+        insert into return_form (area, department, writer, extension, hp, returndate, id, name, sapapproval, quantity)
+        values (#{area}, #{department}, #{writer}, #{extension}, #{hp}, #{returndate}, #{id}, #{name}, #{sapapproval}, #{quantity})
+        on duplicate key update area=values(area), extension=values(extension), hp=values(hp), id=values(id), name=values(name), sapapproval=values(sapapproval), quantity=values(quantity)
+    </insert>
+
+    <select id="findOne" resultType="com.cnp.pwsasset.return_form.entity.ReturnForm">
+        select * from return_form where writer=#{writer} and department=#{department} and returndate=#{returndate}
+    </select>
+
+    <update id="modify">
+        update return_form
+        set area=#{area}, extension=#{extension}, hp=#{hp}, id=#{id}, name=#{name}, sapapproval=#{sapapproval}, quantity=#{quantity}
+        where writer=#{writer} and department=#{department} and returndate=#{returndate}
+    </update>
+</mapper>

@@ -10,7 +10,7 @@ import java.util.List;
 public interface RetireeDiskRepository {
     List<RetireeDisk> findAll();
 
-    RetireeDisk findOneWhereRetireeId(String retiree_id);
+    RetireeDisk findOneWhereId(String retiree_id);
 
     boolean save(RetireeDisk retireeDisk);
 

@@ -36,7 +36,7 @@
 
     <update id="modifyWhereIdasset">
         update pwsinfo
-        set uptake=#{uptake}, company=#{company}, classification=#{classification}, headquarters=#{headquarters}, center=#{center}, department=#{department}, username=#{username}, userid=#{userid}, centercd=#{centercd}, model=#{model}, assetno=#{assetno}, idasset=#{idasset}, sn=#{sn}, graphic=#{graphic}, memory=#{memory}, monitor=#{monitor}, area=#{area}, building=#{building}, storey=#{storey}, location=#{location}, objpurchase=#{objpurchase}, objuse=#{objuse}, desctask=#{desctask}, introductiondate=#{introductiondate}, note=#{note}
+        set uptake=#{uptake}, company=#{company}, classification=#{classification}, headquarters=#{headquarters}, center=#{center}, department=#{department}, username=#{username}, userid=#{userid}, centercd=#{centercd}, model=#{model}, assetno=#{assetno}, sn=#{sn}, graphic=#{graphic}, memory=#{memory}, monitor=#{monitor}, area=#{area}, building=#{building}, storey=#{storey}, location=#{location}, objpurchase=#{objpurchase}, objuse=#{objuse}, desctask=#{desctask}, introductiondate=#{introductiondate}, note=#{note}
         where idasset=#{idasset}
     </update>
 
@@ -46,7 +46,7 @@
         <foreach collection="list" item="item" separator=",">
             (#{item.uptake}, #{item.company}, #{item.classification}, #{item.headquarters}, #{item.center}, #{item.department}, #{item.username}, #{item.userid}, #{item.centercd}, #{item.model}, #{item.assetno}, #{item.idasset}, #{item.sn}, #{item.graphic}, #{item.memory}, #{item.monitor}, #{item.area}, #{item.building}, #{item.storey}, #{item.location}, #{item.objpurchase}, #{item.objuse}, #{item.desctask}, #{item.introductiondate}, #{item.note})
         </foreach>
-        on duplicate key update uptake=values(uptake), company=values(company), classification=values(classification), headquarters=values(headquarters), center=values(center), department=values(department), username=values(username), userid=values(userid), centercd=values(centercd), model=values(model), assetno=values(assetno), idasset=values(idasset), sn=values(sn), graphic=values(graphic), memory=values(memory), monitor=values(monitor), area=values(area), building=values(building), storey=values(storey), location=values(location), objpurchase=values(objpurchase), objuse=values(objuse), desctask=values(desctask), introductiondate=values(introductiondate), note=values(note)
+        on duplicate key update uptake=values(uptake), company=values(company), classification=values(classification), headquarters=values(headquarters), center=values(center), department=values(department), username=values(username), userid=values(userid), centercd=values(centercd), model=values(model), assetno=values(assetno), sn=values(sn), graphic=values(graphic), memory=values(memory), monitor=values(monitor), area=values(area), building=values(building), storey=values(storey), location=values(location), objpurchase=values(objpurchase), objuse=values(objuse), desctask=values(desctask), introductiondate=values(introductiondate), note=values(note)
     </insert>
 
     <!--    <select id="queryColumnComment" resultType="com.cnp.pwsasset.pws.dto.ResponseDTO2">-->

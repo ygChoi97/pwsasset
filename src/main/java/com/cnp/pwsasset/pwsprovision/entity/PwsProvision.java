@@ -10,12 +10,12 @@ import java.util.Date;
 @Setter @Getter @ToString
 @AllArgsConstructor
 public class PwsProvision {
-    private String id;
+    private int id;
+    private String classification;  // 자산구분
     private String department;
     private String centercd;
     private String headteam;
     private String center;
-    private String classification;  // 자산구분
     private String headquarters;
     private String sysadmin;
     private String idsysadmin;

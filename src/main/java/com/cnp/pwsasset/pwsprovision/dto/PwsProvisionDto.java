@@ -8,12 +8,12 @@ import java.util.Date;
 @Setter @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PwsProvisionDto {
-    private String id;
+    private int id;
+    private String classification;  // 자산구분
     private String department;
     private String centercd;
     private String headteam;
     private String center;
-    private String classification;  // 자산구분
     private String headquarters;
     private String sysadmin;
     private String idsysadmin;
@@ -34,11 +34,11 @@ public class PwsProvisionDto {
 
     public PwsProvisionDto(PwsProvision pwsProvision) {
         id = pwsProvision.getId();
+        classification = pwsProvision.getClassification();
         department = pwsProvision.getDepartment();
         centercd = pwsProvision.getCentercd();
         headteam = pwsProvision.getHeadteam();
         center = pwsProvision.getCenter();
-        classification = pwsProvision.getClassification();
         headquarters = pwsProvision.getHeadquarters();
         sysadmin = pwsProvision.getSysadmin();
         idsysadmin = pwsProvision.getIdsysadmin();

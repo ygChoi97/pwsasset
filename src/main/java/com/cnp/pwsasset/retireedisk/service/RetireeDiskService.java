@@ -21,8 +21,8 @@ public class RetireeDiskService {
         return new FindAllRetireeDiskDto(repository.findAll());
     }
 
-    public RetireeDiskDto findOneWhereRetireeIdService(String retiree_id) {
-        RetireeDisk retireeDisk = repository.findOneWhereRetireeId(retiree_id);
+    public RetireeDiskDto findOneWhereIdService(String id) {
+        RetireeDisk retireeDisk = repository.findOneWhereId(id);
         log.info("findOneWhereIDService returns data - {}", retireeDisk);
 
         return retireeDisk!=null ? new RetireeDiskDto(retireeDisk) : null;
